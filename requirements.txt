@@ -1,0 +1,8 @@
+chromadb
+google-genai
+langchain-core
+markdownify
+numpy
+python-dotenv
+sentence-transformers
+unstructured[pdf]
