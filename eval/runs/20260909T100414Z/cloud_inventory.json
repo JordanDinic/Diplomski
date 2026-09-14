@@ -1,0 +1,43 @@
+{
+  "count": 1856,
+  "fetched_count": 1856,
+  "collection": "diplomski_rag",
+  "record_types": {
+    "parent": 495,
+    "child": 1361
+  },
+  "file_names": [
+    "Brufen_400mg.pdf",
+    "Vodic_dobre_apotekarske_prakse.pdf",
+    "amlopin-combo.pdf",
+    "amoksiklav.pdf",
+    "aspirin-500.pdf",
+    "bensedin.pdf",
+    "brufen_600mg.pdf",
+    "cefalexin-alkaloid.pdf",
+    "concor-COR_bisoprolol.pdf",
+    "controloc.pdf",
+    "diovan.pdf",
+    "euthyrox.pdf",
+    "glucophage.pdf",
+    "interakcije-lekova.pdf",
+    "lasix.pdf",
+    "lexilium.pdf",
+    "monopril.pdf",
+    "nolpaza.pdf",
+    "norvasc.pdf",
+    "panadol-advance.pdf",
+    "pentrexyl.pdf",
+    "presolol.pdf",
+    "pulmicort.pdf",
+    "rivotril.pdf",
+    "sumamed.pdf",
+    "tanyz-eras.pdf",
+    "tritace.pdf",
+    "ventolin.pdf",
+    "voltaren-forte.pdf",
+    "xanax.pdf",
+    "zoloft.pdf"
+  ],
+  "orphan_parent_ids": []
+}

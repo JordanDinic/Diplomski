@@ -1,0 +1,28 @@
+{
+  "file": "xanax.pdf",
+  "default_chunk_size": 1000,
+  "overlap": 200,
+  "children": 31,
+  "chunks_with_new_token_fragments": 2,
+  "examples": [
+    {
+      "section": "2. Sta treba da znate pre nego sto uzmete lek",
+      "child": 13,
+      "new_token_fragments": [
+        "yell"
+      ],
+      "head": "ovaj lek tokom trudnoće i u tom slučaju će pratiti novorođenče.\n\nDojenje\n\nLek prolazi u majčino mleko i ne preporučuje se primena leka Xanax tokom doj",
+      "tail": "tableti, odnosno suštinski je „bez natrijuma“.\nLek Xanax, 0,5 mg, tablete sadrži boju sunset yellow\nLek Xanax, 0,5 mg, tablete sadrži boju sunset yell"
+    },
+    {
+      "section": "2. Sta treba da znate pre nego sto uzmete lek",
+      "child": 14,
+      "new_token_fragments": [
+        "ow",
+        "yell"
+      ],
+      "head": "lek sadrži manje od 1 mmol (23 mg) natrijiuma po tableti, odnosno suštinski je „bez natrijuma“.\nLek Xanax, 0,5 mg, tablete sadrži boju sunset yellow\nL",
+      "tail": "\nLek Xanax, 0,5 mg, tablete sadrži boju sunset yellow\nLek Xanax, 0,5 mg, tablete sadrži boju sunset yell\n\now koja može da izazove alergijske reakcije."
+    }
+  ]
+}

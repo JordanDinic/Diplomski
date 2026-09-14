@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Any
 
 from diplomski.console import configure_console_output
@@ -15,10 +14,9 @@ from diplomski.rag_prompt import (
 )
 from diplomski.retriever import ChromaRetriever, RetrievedDocument
 from diplomski.settings import (
-    DEFAULT_CHROMA_DIR,
     DEFAULT_COLLECTION_NAME,
-    DEFAULT_EMBEDDING_DEVICE,
     DEFAULT_GEMINI_MAX_OUTPUT_TOKENS,
+    DEFAULT_GROUP_BY_DOCUMENT_LIMIT,
     DEFAULT_MAX_CONTEXT_CHARS,
     DEFAULT_RETRIEVAL_CANDIDATE_POOL_SIZE,
     DEFAULT_TOP_K,
@@ -103,7 +101,10 @@ def print_rag_response(
         for index, source in enumerate(response.sources, start=1):
             print(
                 f"{index}. file={source.get('file_name')} | "
+                f"lek={source.get('medicine_name')} | "
+                f"aktivna_supstanca={source.get('active_substance')} | "
                 f"page={source.get('page')} | "
+                f"section={source.get('section')} | "
                 f"score={source.get('score'):.4f} | "
                 f"source={source.get('source')}"
             )
@@ -121,22 +122,30 @@ def print_rag_response(
 
 
 def create_rag_pipeline(
-    persist_dir: str | Path = DEFAULT_CHROMA_DIR,
     collection_name: str = DEFAULT_COLLECTION_NAME,
-    embedding_device: str = DEFAULT_EMBEDDING_DEVICE,
+    cloud_host: str | None = None,
+    tenant: str | None = None,
+    database: str | None = None,
     gemini_model: str | None = None,
     max_output_tokens: int = DEFAULT_GEMINI_MAX_OUTPUT_TOKENS,
     top_k: int = DEFAULT_TOP_K,
     candidate_pool_size: int = DEFAULT_RETRIEVAL_CANDIDATE_POOL_SIZE,
+    use_hybrid_search: bool = True,
+    group_by_source: bool = True,
+    group_by_document_limit: int = DEFAULT_GROUP_BY_DOCUMENT_LIMIT,
     max_context_chars: int = DEFAULT_MAX_CONTEXT_CHARS,
 ) -> RAGPipeline:
-    """Create a configured RAG pipeline from local ChromaDB and Gemini Flash."""
+    """Create a configured RAG pipeline from Chroma Cloud and Gemini Flash."""
 
     retriever = ChromaRetriever(
-        persist_dir=persist_dir,
         collection_name=collection_name,
-        device=embedding_device,
+        cloud_host=cloud_host,
+        tenant=tenant,
+        database=database,
         candidate_pool_size=candidate_pool_size,
+        use_hybrid_search=use_hybrid_search,
+        group_by_source=group_by_source,
+        group_by_document_limit=group_by_document_limit,
     )
     llm = GeminiFlashClient(
         model_name=gemini_model,
@@ -153,7 +162,7 @@ def create_rag_pipeline(
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Ask a question using the local ChromaDB RAG store and Gemini Flash.",
+        description="Ask a question using Chroma Cloud search and Gemini Flash.",
     )
     parser.add_argument(
         "question",
@@ -168,19 +177,24 @@ def _parse_args() -> argparse.Namespace:
         help="Number of retrieved documents to use.",
     )
     parser.add_argument(
-        "--persist-dir",
-        default=DEFAULT_CHROMA_DIR,
-        help="Path to the ChromaDB persistent directory.",
-    )
-    parser.add_argument(
         "--collection-name",
         default=DEFAULT_COLLECTION_NAME,
-        help="ChromaDB collection name.",
+        help="Chroma Cloud collection name.",
     )
     parser.add_argument(
-        "--embedding-device",
-        default=DEFAULT_EMBEDDING_DEVICE,
-        help="Embedding device for the query encoder: auto, cpu, cuda, cuda:0...",
+        "--cloud-host",
+        default=None,
+        help="Chroma Cloud host. Defaults to CHROMA_HOST or api.trychroma.com.",
+    )
+    parser.add_argument(
+        "--tenant",
+        default=None,
+        help="Chroma Cloud tenant. Defaults to CHROMA_TENANT.",
+    )
+    parser.add_argument(
+        "--database",
+        default=None,
+        help="Chroma Cloud database. Defaults to CHROMA_DATABASE.",
     )
     parser.add_argument(
         "--gemini-model",
@@ -203,7 +217,23 @@ def _parse_args() -> argparse.Namespace:
         "--candidate-pool-size",
         type=int,
         default=DEFAULT_RETRIEVAL_CANDIDATE_POOL_SIZE,
-        help="Number of vector candidates to rerank before selecting top-k.",
+        help="Number of dense/sparse candidates before RRF and GroupBy.",
+    )
+    parser.add_argument(
+        "--group-by-document-limit",
+        type=int,
+        default=DEFAULT_GROUP_BY_DOCUMENT_LIMIT,
+        help="Maximum chunks kept per source document when GroupBy is enabled.",
+    )
+    parser.add_argument(
+        "--no-hybrid-search",
+        action="store_true",
+        help="Use dense query fallback instead of Cloud hybrid RRF search.",
+    )
+    parser.add_argument(
+        "--no-group-by-source",
+        action="store_true",
+        help="Do not group/deduplicate results by source document.",
     )
     parser.add_argument(
         "--show-context",
@@ -226,13 +256,17 @@ if __name__ == "__main__":
     question_text = " ".join(args.question)
 
     rag = create_rag_pipeline(
-        persist_dir=args.persist_dir,
         collection_name=args.collection_name,
-        embedding_device=args.embedding_device,
+        cloud_host=args.cloud_host,
+        tenant=args.tenant,
+        database=args.database,
         gemini_model=args.gemini_model,
         max_output_tokens=args.max_output_tokens,
         top_k=args.top_k,
         candidate_pool_size=args.candidate_pool_size,
+        use_hybrid_search=not args.no_hybrid_search,
+        group_by_source=not args.no_group_by_source,
+        group_by_document_limit=args.group_by_document_limit,
         max_context_chars=args.max_context_chars,
     )
     rag_response = rag.answer(question_text)

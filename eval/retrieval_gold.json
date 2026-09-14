@@ -1,0 +1,193 @@
+[
+  {
+    "id": "norvasc_adverse_effects",
+    "question": "Koja su nezeljena dejstva leka Norvasc?",
+    "expected_chunks": [
+      {
+        "label": "Norvasc / amlodipin / nezeljena dejstva",
+        "file_name": "norvasc.pdf",
+        "active_substance": "amlodipin",
+        "section_title": "4. Moguca nezeljena dejstva"
+      }
+    ]
+  },
+  {
+    "id": "amlodipin_adverse_effects",
+    "question": "Koja su nezeljena dejstva amlodipina?",
+    "expected_chunks": [
+      {
+        "label": "Norvasc / amlodipin / nezeljena dejstva",
+        "file_name": "norvasc.pdf",
+        "active_substance": "amlodipin",
+        "section_title": "4. Moguca nezeljena dejstva"
+      },
+      {
+        "label": "Amlopin Combo / nezeljena dejstva",
+        "file_name": "amlopin-combo.pdf",
+        "section_title": "4. Moguca nezeljena dejstva"
+      }
+    ]
+  },
+  {
+    "id": "norvasc_dosing",
+    "question": "Kako se uzima lek Norvasc?",
+    "expected_chunks": [
+      {
+        "label": "Norvasc / doziranje",
+        "file_name": "norvasc.pdf",
+        "active_substance": "amlodipin",
+        "section_title": "3. Kako se uzima lek"
+      }
+    ]
+  },
+  {
+    "id": "xanax_before_use",
+    "question": "Sta treba da znam pre nego sto uzmem Xanax?",
+    "expected_chunks": [
+      {
+        "label": "Xanax / upozorenja",
+        "file_name": "xanax.pdf",
+        "active_substance": "alprazolam",
+        "section_title": "2. Sta treba da znate pre nego sto uzmete lek"
+      }
+    ]
+  },
+  {
+    "id": "xanax_adverse_effects",
+    "question": "Koja su moguca nezeljena dejstva leka Xanax?",
+    "expected_chunks": [
+      {
+        "label": "Xanax / nezeljena dejstva",
+        "file_name": "xanax.pdf",
+        "active_substance": "alprazolam",
+        "section_title": "4. Moguca nezeljena dejstva"
+      }
+    ]
+  },
+  {
+    "id": "glucophage_purpose",
+    "question": "Sta je lek Glucophage i cemu je namenjen?",
+    "expected_chunks": [
+      {
+        "label": "Glucophage / namena",
+        "file_name": "glucophage.pdf",
+        "active_substance": "metformin",
+        "section_title": "1. Sta je lek i cemu je namenjen"
+      }
+    ]
+  },
+  {
+    "id": "zoloft_storage",
+    "question": "Kako se cuva lek Zoloft?",
+    "expected_chunks": [
+      {
+        "label": "Zoloft / cuvanje",
+        "file_name": "zoloft.pdf",
+        "active_substance": "sertralin",
+        "section_title": "5. Kako cuvati lek"
+      }
+    ]
+  },
+  {
+    "id": "brufen_400_package",
+    "question": "Sta sadrzi pakovanje leka Brufen 400 mg?",
+    "expected_chunks": [
+      {
+        "label": "Brufen 400 mg / sastav pakovanja",
+        "file_name": "Brufen_400mg.pdf",
+        "active_substance": "ibuprofen",
+        "section_title": "6. Sadrzaj pakovanja i ostale informacije"
+      }
+    ]
+  },
+  {
+    "id": "aspirin_before_use",
+    "question": "Sta treba znati pre uzimanja Aspirina 500?",
+    "expected_chunks": [
+      {
+        "label": "Aspirin 500 / upozorenja",
+        "file_name": "aspirin-500.pdf",
+        "active_substance": "acetilsalicilna kiselina",
+        "section_title": "2. Sta treba da znate pre nego sto uzmete lek"
+      }
+    ]
+  },
+  {
+    "id": "ibuprofen_adverse_effects",
+    "question": "Koja su nezeljena dejstva ibuprofena?",
+    "expected_chunks": [
+      {
+        "label": "Brufen 400 mg / ibuprofen / nezeljena dejstva",
+        "file_name": "Brufen_400mg.pdf",
+        "active_substance": "ibuprofen",
+        "section_title": "4. Moguca nezeljena dejstva"
+      },
+      {
+        "label": "Brufen 600 mg / ibuprofen / nezeljena dejstva",
+        "file_name": "brufen_600mg.pdf",
+        "active_substance": "ibuprofen",
+        "section_title": "4. Moguca nezeljena dejstva"
+      }
+    ]
+  },
+  {
+    "id": "interactions_pharmacokinetic",
+    "question": "Sta su farmakokineticke interakcije lekova?",
+    "expected_chunks": [
+      {
+        "label": "Interakcije lekova / farmakokineticke interakcije",
+        "file_name": "interakcije-lekova.pdf",
+        "document_type": "interaction_reference",
+        "section_title": "Farmakokineticke interakcije"
+      }
+    ]
+  },
+  {
+    "id": "interactions_food",
+    "question": "Koje su interakcije lekova sa hranom?",
+    "expected_chunks": [
+      {
+        "label": "Interakcije lekova / hrana",
+        "file_name": "interakcije-lekova.pdf",
+        "document_type": "interaction_reference",
+        "section_title": "Interakcije lekova sa hranom"
+      }
+    ]
+  },
+  {
+    "id": "guide_dispensing",
+    "question": "Sta vodic dobre apotekarske prakse kaze o izdavanju lekova?",
+    "expected_chunks": [
+      {
+        "label": "Vodic / izdavanje lekova",
+        "file_name": "Vodic_dobre_apotekarske_prakse.pdf",
+        "document_type": "practice_guide",
+        "section_title_contains": "Aktivnost V: Izdavanje lekova"
+      }
+    ]
+  },
+  {
+    "id": "guide_storage",
+    "question": "Kako dobra apotekarska praksa opisuje skladistenje i cuvanje lekova?",
+    "expected_chunks": [
+      {
+        "label": "Vodic / skladistenje i cuvanje",
+        "file_name": "Vodic_dobre_apotekarske_prakse.pdf",
+        "document_type": "practice_guide",
+        "section_title_contains": "Planiranje, nabavka, skladistenje i cuvanje"
+      }
+    ]
+  },
+  {
+    "id": "guide_patient_needs",
+    "question": "Kako farmaceut procenjuje zdravstvene potrebe pacijenta?",
+    "expected_chunks": [
+      {
+        "label": "Vodic / procena zdravstvenih potreba pacijenta",
+        "file_name": "Vodic_dobre_apotekarske_prakse.pdf",
+        "document_type": "practice_guide",
+        "section_title_contains": "Procena zdravstvenih potreba pacijenta"
+      }
+    ]
+  }
+]

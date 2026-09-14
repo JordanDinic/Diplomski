@@ -1,56 +1,75 @@
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Any
 
-from unstructured.partition.pdf import partition_pdf
+from langchain_core.documents import Document
+from pypdf import PdfReader
+
+from diplomski.console import configure_console_output
+from diplomski.document_types import DocumentType, detect_document_type
 
 
 PDF_EXTENSION = ".pdf"
-DEFAULT_DATA_DIR = "Literatura/Lekovi"
+DEFAULT_DATA_DIR = "Literatura"
 
 
-def load_pdf(file_path: str | Path) -> list[Any]:
+def load_pdf(file_path: str | Path) -> list[Document]:
     """
-    Load one PDF with Unstructured and return raw extracted elements.
+    Load one PDF and return one LangChain Document per non-empty page.
 
-    This layer only parses PDFs and adds traceability metadata. Chunking,
-    conversion to LangChain Documents, embeddings and vector-store writes
-    happen later in the RAG pipeline.
+    This function is intentionally only a loading/extraction step. It does not
+    split sections, create embeddings, write to ChromaDB, or call an LLM.
     """
 
     path = _validate_pdf_path(file_path)
-    elements = partition_pdf(
-        filename=str(path),
-        strategy="fast",
-        languages=["srp_latn"],
-        infer_table_structure=True,
-    )
+    reader = _open_pdf(path)
+    document_type = detect_document_type(path, _text_sample(reader))
+    source_document_id = _source_document_id(path)
+    documents: list[Document] = []
 
-    for element_index, element in enumerate(elements):
-        _add_file_metadata(element, path, element_index)
+    for page_index, page in enumerate(reader.pages):
+        text = _extract_page_text(page)
+        if not text:
+            continue
 
-    return elements
+        page_number = page_index + 1
+        documents.append(
+            Document(
+                page_content=text,
+                metadata=_page_metadata(
+                    path=path,
+                    page_number=page_number,
+                    page_index=page_index,
+                    total_pages=len(reader.pages),
+                    document_type=document_type,
+                    source_document_id=source_document_id,
+                ),
+            )
+        )
+
+    return documents
 
 
-def load_all_elements(data_dir: str | Path) -> list[Any]:
+def load_all_documents(data_dir: str | Path = DEFAULT_DATA_DIR) -> list[Document]:
     """
-    Load all PDF files from a directory and return Unstructured elements.
+    Load all PDFs from a directory tree as page-level LangChain Documents.
 
-    Invalid or unreadable PDFs are skipped with a warning so one bad file does
-    not stop the complete ingestion run.
+    Unreadable PDFs are skipped with a warning so one bad file does not stop
+    ingestion for the whole corpus.
     """
 
     data_path = _validate_directory_path(data_dir)
-    elements: list[Any] = []
+    documents: list[Document] = []
 
     for pdf_path in sorted(data_path.rglob(f"*{PDF_EXTENSION}")):
         try:
-            elements.extend(load_pdf(pdf_path))
+            documents.extend(load_pdf(pdf_path))
         except Exception as exc:
             print(f"[WARN] Skipping {pdf_path}: {exc}")
 
-    return elements
+    return documents
 
 
 def _validate_pdf_path(file_path: str | Path) -> Path:
@@ -77,47 +96,110 @@ def _validate_directory_path(data_dir: str | Path) -> Path:
     return data_path
 
 
-def _add_file_metadata(element: Any, path: Path, element_index: int) -> None:
-    metadata = getattr(element, "metadata", None)
-    if metadata is None:
-        return
-
-    category = _category(element)
-    metadata.source = str(path)
-    metadata.folder = path.parent.name
-    metadata.file_name = path.name
-    metadata.file_type = PDF_EXTENSION
-    metadata.element_index = element_index
-    metadata.category = category
-    metadata.content_type = "table" if category in {"Table", "TableChunk"} else "text"
+def _open_pdf(path: Path) -> PdfReader:
+    try:
+        return PdfReader(str(path))
+    except Exception as exc:
+        raise ValueError(f"Could not read PDF: {path}") from exc
 
 
-def _category(element: Any) -> str:
-    return str(getattr(element, "category", type(element).__name__))
+def _text_sample(reader: PdfReader, max_pages: int = 2) -> str:
+    samples: list[str] = []
+
+    for page in reader.pages[:max_pages]:
+        text = _extract_page_text(page)
+        if text:
+            samples.append(text)
+
+    return "\n".join(samples)
 
 
-def _print_element_preview(element: Any, index: int) -> None:
-    metadata = getattr(element, "metadata", None)
-    category = _category(element)
-    preview = str(element).strip().replace("\n", " ")[:500]
+def _extract_page_text(page: Any) -> str:
+    try:
+        return (page.extract_text() or "").strip()
+    except Exception as exc:
+        print(f"[WARN] Could not extract page text: {exc}")
+        return ""
+
+
+def _page_metadata(
+    *,
+    path: Path,
+    page_number: int,
+    page_index: int,
+    total_pages: int,
+    document_type: DocumentType,
+    source_document_id: str,
+) -> dict[str, Any]:
+    metadata = {
+        "source": str(path),
+        "source_document_id": source_document_id,
+        "folder": path.parent.name,
+        "file_name": path.name,
+        "file_type": PDF_EXTENSION,
+        "document_type": document_type.value,
+        "content_type": "text",
+        "page": page_number,
+        "page_number": page_number,
+        "page_index": page_index,
+        "total_pages": total_pages,
+    }
+    metadata.update(_medicine_metadata(path, document_type))
+    return metadata
+
+
+def _medicine_metadata(path: Path, document_type: DocumentType) -> dict[str, str]:
+    """Return medicine-specific metadata for drug leaflet PDFs."""
+
+    if document_type != DocumentType.MEDICINE_LEAFLET:
+        return {}
+
+    return {
+        "medicine_name": _display_name(path.stem, capitalize_first=True),
+        "active_substance": _display_name(path.parent.name),
+    }
+
+
+def _display_name(raw_name: str, *, capitalize_first: bool = False) -> str:
+    """Convert file or folder names into a readable label."""
+
+    normalized = (
+        raw_name.replace("_", " ")
+        .replace("-", " ")
+        .replace("&", " & ")
+    )
+    display_name = " ".join(normalized.split())
+    if capitalize_first and display_name:
+        return display_name[:1].upper() + display_name[1:]
+
+    return display_name
+
+
+def _source_document_id(path: Path) -> str:
+    digest = hashlib.sha1(str(path).encode("utf-8")).hexdigest()[:20]
+    return f"source_{digest}"
+
+
+def _print_document_preview(document: Document, index: int) -> None:
+    metadata = document.metadata
+    preview = document.page_content.replace("\n", " ")[:500]
 
     print("=" * 80)
-    print(f"Element #{index}")
-    print(f"category: {category}")
-    print(f"content_type: {getattr(metadata, 'content_type', None)}")
-    print(f"page: {getattr(metadata, 'page_number', None)}")
-    print(f"element_index: {getattr(metadata, 'element_index', None)}")
-    print(f"source: {getattr(metadata, 'source', None)}")
+    print(f"Document #{index}")
+    print(f"document_type: {metadata.get('document_type')}")
+    print(f"medicine_name: {metadata.get('medicine_name')}")
+    print(f"active_substance: {metadata.get('active_substance')}")
+    print(f"content_type: {metadata.get('content_type')}")
+    print(f"page: {metadata.get('page')}")
+    print(f"source: {metadata.get('source')}")
     print(f"content: {preview}")
-
-    if category in {"Table", "TableChunk"}:
-        print("\ntable_html:")
-        print(getattr(metadata, "text_as_html", None) or "[no HTML available]")
 
 
 if __name__ == "__main__":
-    loaded_elements = load_all_elements(DEFAULT_DATA_DIR)
-    print(f"Loaded {len(loaded_elements)} PDF elements.")
+    configure_console_output()
 
-    for element_number, loaded_element in enumerate(loaded_elements, start=1):
-        _print_element_preview(loaded_element, element_number)
+    loaded_documents = load_all_documents(DEFAULT_DATA_DIR)
+    print(f"Loaded {len(loaded_documents)} PDF pages.")
+
+    for document_number, loaded_document in enumerate(loaded_documents, start=1):
+        _print_document_preview(loaded_document, document_number)

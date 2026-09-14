@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cyrillic_norvasc",
+    "question": "\u041a\u043e\u0458\u0430 \u0441\u0443 \u043d\u0435\u0436\u0435\u0459\u0435\u043d\u0430 \u0434\u0435\u0458\u0441\u0442\u0432\u0430 \u043b\u0435\u043a\u0430 \u041d\u043e\u0440\u0432\u0430\u0441\u043a?",
+    "expected_chunks": [
+      {"file_name": "norvasc.pdf", "section_title": "4. Moguca nezeljena dejstva"}
+    ]
+  },
+  {
+    "id": "english_xanax_missed_dose",
+    "question": "What should I do if I miss a dose of Xanax?",
+    "expected_chunks": [
+      {"file_name": "xanax.pdf", "section_title": "3. Kako se uzima lek", "must_contain": ["Ako ste zaboravili"]}
+    ]
+  },
+  {
+    "id": "norvasc_grapefruit",
+    "question": "Da li uz Norvasc sme sok od grejpfruta?",
+    "expected_chunks": [
+      {"file_name": "norvasc.pdf", "section_title": ["2. Sta treba da znate pre nego sto uzmete lek", "3. Kako se uzima lek"], "must_contain": ["grejpfrut"]}
+    ]
+  },
+  {
+    "id": "xanax_driving",
+    "question": "Smem li da vozim dok uzimam Xanax?",
+    "expected_chunks": [
+      {"file_name": "xanax.pdf", "section_title": "2. Sta treba da znate pre nego sto uzmete lek", "must_contain": ["upravljanje vozilima"]}
+    ]
+  }
+]

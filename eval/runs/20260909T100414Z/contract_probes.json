@@ -1,0 +1,58 @@
+{
+  "document_id_unchanged_after_index_change": false,
+  "long_parent_evidence_preserved_in_prompt": false,
+  "second_source_preserved_in_prompt": false,
+  "reported_sources": [
+    {
+      "source": "first.pdf",
+      "file_name": "first.pdf",
+      "medicine_name": null,
+      "active_substance": null,
+      "page": 1,
+      "section": null,
+      "content_type": null,
+      "score": 0.01
+    },
+    {
+      "source": "second.pdf",
+      "file_name": "second.pdf",
+      "medicine_name": null,
+      "active_substance": null,
+      "page": 1,
+      "section": null,
+      "content_type": null,
+      "score": 0.009
+    }
+  ],
+  "word_splitting_probe": {
+    "chunk_size": 45,
+    "overlap": 10,
+    "chunks": [
+      "alpha beta gamma delta epsilon zeta alpha",
+      "alpha\n\nbeta gamma delta epsilon zeta alpha be",
+      "alpha be\n\nta",
+      "be\n\nta\n\ngamma delta epsilon zeta alpha beta g",
+      "beta g\n\namma",
+      "g\n\namma\n\ndelta epsilon zeta alpha beta gamma",
+      "gamma\n\ndelta",
+      "mma\n\ndelta\n\nepsilon zeta alpha beta gamma del",
+      "gamma del\n\nta epsilon",
+      "epsilon\n\nzeta alpha beta gamma delta epsilon",
+      "epsilon\n\nzeta",
+      "ilon\n\nzeta\n\nalpha beta gamma delta epsilon ze",
+      "ze\n\nta alpha",
+      "alpha\n\nbeta gamma delta epsilon zeta alpha be",
+      "alpha be\n\nta\n\ngamma delta epsilon zeta"
+    ],
+    "non_original_tokens": [
+      "amma",
+      "be",
+      "del",
+      "g",
+      "ilon",
+      "mma",
+      "ta",
+      "ze"
+    ]
+  }
+}

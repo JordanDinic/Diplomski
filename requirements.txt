@@ -1,8 +1,7 @@
 chromadb
 google-genai
+httpx
 langchain-core
-markdownify
-numpy
 python-dotenv
-sentence-transformers
-unstructured[pdf]
+pypdf
+streamlit

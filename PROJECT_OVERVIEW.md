@@ -1,399 +1,302 @@
 # Diplomski RAG projekat
 
-Ovaj projekat je lokalni RAG sistem za pretragu i odgovaranje na pitanja na osnovu PDF dokumenata o lekovima.
+Ovaj projekat je RAG sistem za podrsku radu u apoteci. Sistem pretrazuje PDF
+dokumente o lekovima, interakcijama i dobroj apotekarskoj praksi, a zatim na
+osnovu pronadjenog konteksta generise odgovor.
 
 Glavni tok je:
 
 ```text
-PDF dokumenti
--> Unstructured partition_pdf()
--> Unstructured elementi
--> obogacivanje tabela kontekstom
--> chunk_by_title()
--> LangChain Document objekti
--> SentenceTransformer embedding
--> ChromaDB vector store
--> retrieval + reranking
+PDF
+-> page-level loading
+-> prepoznavanje tipa dokumenta
+-> prepoznavanje sekcija
+-> parent-child chunking
+-> Chroma Cloud upload
+-> Chroma Cloud hybrid search
 -> RAG prompt
--> Gemini Flash odgovor
+-> Gemini odgovor
 ```
 
-Sistem je podeljen po fazama da bi ingestion, embedding, pretraga i generisanje odgovora mogli da se testiraju nezavisno.
-
-## Struktura projekta
+## Fajlovi
 
 ```text
 src/diplomski/
-  data_loader.py          PDF loading pomocu Unstructured
-  embedding_pipeline.py   priprema elemenata, chunking i embedding
-  vector_store.py         cuvanje embeddinga u ChromaDB
-  retriever.py            retrieval iz ChromaDB + lexical reranking
-  search_documents.py     CLI za pronalazenje top-k dokumenata
-  rag_prompt.py           pravljenje RAG prompta i izvora
-  gemini_client.py        Gemini API klijent
-  rag_pipeline.py         kompletan RAG tok: query -> answer
-  settings.py             centralna podesavanja
-  console.py              UTF-8 podesavanje za Windows terminal
+  data_loader.py              ucitava PDF strane u LangChain Document objekte
+  document_types.py           prepoznaje tip PDF dokumenta
+  document_sections.py        pravi parent sekcije po tipu dokumenta
+  chunking.py                 pravi child chunkove za pretragu
+  embedding_pipeline.py       tanak compatibility sloj za pripremu dokumenata
+  chroma_documents.py         metadata cleanup i 16 KiB zastita za Chroma upload
+  vector_store.py             Chroma Cloud kolekcija, upload i search
+  retriever.py                pitanje -> Chroma search -> top-k rezultati
+  search_documents.py         CLI za proveru retrieval-a bez LLM-a
+  evaluate_retrieval.py       precision@k i recall@k evaluacija retrieval-a
+  rag_prompt.py               formatiranje konteksta i izvora
+  gemini_client.py            Gemini API klijent
+  rag_pipeline.py             kompletan RAG tok
+  ui_app.py                   Streamlit UI za lokalni demo
+  migrate_to_chroma_cloud.py  migracija PDF-ova ili stare lokalne Chroma baze
+  settings.py                 centralna podesavanja
+  console.py                  UTF-8 podesavanje za Windows terminal
 ```
 
-## 1. PDF loading
+## Loading
 
-Fajl: `src/diplomski/data_loader.py`
+`data_loader.py` ucitava samo PDF fajlove. Za svaki neprazan PDF page pravi
+jedan LangChain `Document`.
 
-Loader koristi `unstructured.partition.pdf.partition_pdf()` i vraca originalne Unstructured elemente, a ne LangChain `Document` objekte.
-
-Najvaznije funkcije:
-
-- `load_pdf(file_path)` ucitava jedan PDF.
-- `load_all_elements(data_dir)` prolazi kroz folder i podfoldere i ucitava sve PDF fajlove.
-- `_add_file_metadata()` dodaje informacije potrebne za traceability.
-
-Za svaki element se dodaje metadata kao:
-
-```python
-metadata.source
-metadata.folder
-metadata.file_name
-metadata.file_type
-metadata.element_index
-metadata.category
-metadata.content_type
-```
-
-Ova faza namerno ne radi chunking i ne pravi embeddinge. Ona samo izvlaci sirove PDF elemente.
-
-## 2. Embedding pipeline
-
-Fajl: `src/diplomski/embedding_pipeline.py`
-
-Ovaj modul pretvara Unstructured elemente u podatke spremne za vector store.
-
-Tok rada:
+Metadata za svaku stranu sadrzi:
 
 ```text
-elements
--> prepare_elements()
--> chunk_elements()
--> chunks_to_documents()
--> embed_documents()
+source
+source_document_id
+folder
+file_name
+file_type
+document_type
+medicine_name
+active_substance
+page
+page_number
+page_index
+total_pages
 ```
 
-### Tabele
+Loader namerno ne radi chunking, embedding, Chroma upload ili LLM poziv.
 
-Pre chunkovanja, svaka tabela dobija prethodna 2 relevantna tekstualna elementa iz istog PDF-a.
+## Tipovi Dokumenata
 
-Kontekst se dodaje direktno u `Table.text`, na primer:
+`document_types.py` razvrstava PDF-ove u:
 
 ```text
-Context:
-Tekst koji prethodi tabeli.
-
-Jos jedan relevantan tekstualni element.
-
-Table:
-| Kolona 1 | Kolona 2 |
-| --- | --- |
-| ... | ... |
+medicine_leaflet
+practice_guide
+interaction_reference
+unknown
 ```
 
-Ovo je vazno jer kontekst onda ulazi u `Document.page_content`, pa se embeduje zajedno sa tabelom.
+Ovo je vazno jer uputstva za lekove, vodic dobre apotekarske prakse i dokument
+o interakcijama nemaju istu strukturu.
 
-Elementi kao `Header`, `Footer`, `PageBreak`, `Image`, `Picture`, `Figure`, `Table` i `TableChunk` ne ulaze u table context.
+## Sekcije
 
-Ako tabela ima `metadata.text_as_html`, originalni HTML ostaje sacuvan u metadata, a sadrzaj tabele se za embedding pretvara u Markdown preko `markdownify`.
+`document_sections.py` pravi parent sekcije:
 
-### Chunking
+- `medicine_leaflet`: trazi standardnih 6 sekcija uputstva za lek.
+- `practice_guide`: koristi PDF outline/bookmarks kada postoje.
+- `interaction_reference`: koristi jednostavna pravila za poznate naslove.
+- `unknown`: fallback je jedna parent sekcija po strani.
 
-Chunking koristi Unstructured `chunk_by_title()`:
-
-```python
-chunk_by_title(
-    prepared_elements,
-    max_characters=...,
-    new_after_n_chars=...,
-    overlap=...,
-    include_orig_elements=True,
-    skip_table_chunking=True,
-    isolate_table=True,
-)
-```
-
-Bitna podesavanja:
-
-- `skip_table_chunking=True`: tabela se ne deli na manje delove.
-- `isolate_table=True`: tabela ostaje poseban chunk.
-- `include_orig_elements=True`: metadata cuva vezu sa originalnim elementima.
-
-### Embedding model
-
-Podrazumevani embedding model je:
+Svaka parent sekcija dobija:
 
 ```text
-Qwen/Qwen3-Embedding-0.6B
+record_type=parent
+content_type=parent_section
+section_id
+parent_id
+section_title
+section_path
+section_detection
+page_numbers
 ```
 
-Model se ucitava lenjo, tek kada prvi put treba da napravi embedding.
+## Chunking
 
-Device se podesava preko:
+`chunking.py` ne mesa dve sekcije u isti chunk.
+
+Jedna parent sekcija moze dati vise child chunkova:
 
 ```text
-auto
-cpu
-cuda
-cuda:0
+parent sekcija
+-> child chunk 0
+-> child chunk 1
+-> child chunk 2
 ```
 
-Ako je `device="auto"`, kod koristi CUDA ako je dostupna, inace CPU.
-
-## 3. ChromaDB vector store
-
-Fajl: `src/diplomski/vector_store.py`
-
-`ChromaVectorStore` cuva dokumente, metadata i embeddinge u lokalnu ChromaDB bazu.
-
-Podrazumevani folder baze je:
+Svaki child chunk dobija retrieval prefiks:
 
 ```text
-chroma_db
+Lek: Norvasc
+Aktivna supstanca: amlodipin
+Document: norvasc.pdf
+Section: 4. Moguca nezeljena dejstva
+
+<tekst chunk-a>
 ```
 
-Podrazumevana kolekcija je:
+Child metadata zadrzava vezu sa parent sekcijom:
 
 ```text
-diplomski_rag
+record_type=child
+content_type=child_chunk
+parent_id
+section_id
+section_title
+child_chunk_index
+child_chunk_count
 ```
 
-Najvaznije metode:
+## Chroma Cloud
 
-- `build_from_elements(elements)` pokrece embedding pipeline i puni ChromaDB.
-- `build_from_documents(documents)` embeduje vec pripremljene LangChain dokumente.
-- `add_documents(documents, embeddings)` dodaje dokumente u kolekciju.
-- `query(query_text, top_k)` vraca slicne dokumente iz ChromaDB.
-- `reset()` brise i ponovo kreira kolekciju.
-- `count()` vraca broj sacuvanih vektora.
+`vector_store.py` je namerno sveden na Chroma odgovornosti:
 
-Metadata se pre cuvanja prilagodjava ChromaDB ogranicenjima. Slozenije vrednosti, kao liste i dict objekti, serijalizuju se u JSON string.
+- kreiranje/get Chroma Cloud kolekcije,
+- reset kolekcije,
+- upload vec pripremljenih `Document` objekata,
+- search nad child chunkovima,
+- vracanje parent sekcije kao sireg konteksta.
 
-## 4. Retrieval
+`chroma_documents.py` radi pripremu dokumenata za upload:
 
-Fajl: `src/diplomski/retriever.py`
+- metadata cleanup,
+- stabilan `document_id`,
+- zastita od Chroma limita od 16 KiB po dokumentu.
 
-`ChromaRetriever` koristi ChromaDB za vektorsku pretragu, ali zatim radi dodatni lexical reranking.
-
-To znaci:
-
-1. Prvo se iz ChromaDB uzme siri skup kandidata.
-2. Kandidati se dodatno boduju na osnovu poklapanja termina iz pitanja.
-3. Vraca se finalnih top-k dokumenata.
-
-Ovo pomaze kod pitanja gde je naziv leka jako vazan, na primer:
+Kolekcija koristi:
 
 ```text
-Koja su nezeljena dejstva amlodipina?
+Dense:  Chroma Cloud Qwen
+Sparse: Chroma Cloud Splade
+Search: dense + sparse + RRF
 ```
 
-Bez lexical rerankinga, slicni opsti medicinski tekstovi mogu nekad da se rangiraju previsoko. Reranking pojacava dokumente gde se u tekstu ili metadata pominje trazeni lek.
-
-## 5. Search CLI
-
-Fajl: `src/diplomski/search_documents.py`
-
-Ovo je alat za proveru retrieval-a bez Gemini modela.
-
-Primer:
-
-```powershell
-.\.venv\Scripts\python.exe src\diplomski\search_documents.py "Koja su nezeljena dejstva amlodipina?" --device cuda -k 5
-```
-
-Koristi se kada zelis da vidis koji dokumenti se pronalaze pre generisanja finalnog odgovora.
-
-Ispisuje:
-
-- score
-- vector_score
-- lexical_score
-- distance
-- source
-- file_name
-- page
-- content_type
-- preview teksta
-
-## 6. RAG prompt
-
-Fajl: `src/diplomski/rag_prompt.py`
-
-Ovaj modul pravi tekst koji se salje LLM-u.
-
-Najvaznije funkcije:
-
-- `build_rag_prompt()` pravi kompletan prompt od pitanja i pronadjenih dokumenata.
-- `format_context()` formatira retrieval rezultate u ogranicen kontekst.
-- `extract_sources()` pravi listu izvora za prikaz korisniku.
-- `format_source_label()` pravi citljiv naziv izvora.
-
-Sistemska instrukcija trazi da model:
-
-- odgovara na srpskom,
-- koristi samo prosledjeni kontekst,
-- ne izmislja medicinske informacije,
-- jasno kaze kada nema dovoljno informacija,
-- navede izvore kada je korisno.
-
-## 7. Gemini client
-
-Fajl: `src/diplomski/gemini_client.py`
-
-`GeminiFlashClient` je tanak wrapper oko Google Gen AI SDK-a.
-
-API key se cita iz `.env`:
+Upis salje samo:
 
 ```text
-GEMINI_API_KEY=...
+ids
+documents
+metadatas
 ```
 
-ili:
+Embeddinge generise Chroma Cloud.
 
-```text
-GOOGLE_API_KEY=...
-```
+## Parent-Child Retrieval
 
-Model se podesava preko:
+Pretraga se radi nad malim child chunkovima jer su precizniji za embedding.
+Kada Chroma pronadje dobar child chunk, `vector_store.py` preko `parent_id`
+pronalazi parent sekciju i nju vraca kao kontekst za RAG.
 
-```text
-GEMINI_MODEL=gemini-3.6-flash
-```
+To daje bolji balans:
 
-Ako `.env` nije popunjen validnim kljucem, RAG pipeline ne moze da generise odgovor, ali retrieval i dalje moze da se testira preko `search_documents.py`.
+- child chunk = precizna pretraga,
+- parent section = siri kontekst za odgovor.
 
-## 8. Kompletan RAG pipeline
+## Retriever
 
-Fajl: `src/diplomski/rag_pipeline.py`
-
-Ovo je glavni end-to-end tok:
+`retriever.py` je tanak sloj:
 
 ```text
 pitanje
--> ChromaRetriever.retrieve()
--> build_rag_prompt()
--> GeminiFlashClient.generate()
+-> ChromaVectorStore.search()
+-> list[RetrievedDocument]
+```
+
+Retriever ne zna nista o PDF parsiranju, sekcijama ili chunkingu.
+
+## RAG Pipeline
+
+`rag_pipeline.py` radi samo:
+
+```text
+pitanje
+-> retriever
+-> rag_prompt
+-> Gemini
 -> odgovor + izvori
 ```
 
-Primer:
+Ako retrieval ne vrati kontekst, Gemini se ne poziva i korisnik dobija poruku da
+nema dovoljno informacija iz dostupnih dokumenata.
+
+## UI Istorija
+
+Uz svaki odgovor u Streamlit sesiji cuvaju se izvori i pronadjeni kontekst.
+Oni ostaju povezani sa tim odgovorom pri novom pitanju i promeni podesavanja.
+Opcija `Prikazi kontekst` menja samo prikaz; sacuvani kontekst se ne brise i
+odgovor se ne generise ponovo. Isto vazi za pitanja pokrenuta dugmadima sa primerima.
+
+`Ocisti razgovor` uklanja poruke, izvore i kontekst iz tekuce sesije. Istorija
+nije trajno upisana na disk: nova browser sesija ili restart servera je ne obnavlja.
+Odgovori nastali pre ove izmene nemaju sacuvane izvore koje je moguce naknadno prikazati.
+
+Regresione provere su u `tests/test_ui_history.py` i koriste lazan backend,
+bez Chroma/Gemini API poziva.
+
+## Workflow Komande
+
+Napravi ili osvezi Chroma Cloud bazu:
 
 ```powershell
-.\.venv\Scripts\python.exe src\diplomski\rag_pipeline.py "Koja su nezeljena dejstva amlodipina?" --embedding-device cuda -k 5
+.\.venv\Scripts\python.exe src\diplomski\vector_store.py --data-dir Literatura --reset
 ```
 
-Za prikaz konteksta koji je poslat Gemini modelu:
+Testiraj retrieval bez Gemini modela:
 
 ```powershell
-.\.venv\Scripts\python.exe src\diplomski\rag_pipeline.py "Koja su nezeljena dejstva amlodipina?" --embedding-device cuda -k 5 --show-context
+.\.venv\Scripts\python.exe src\diplomski\search_documents.py "nezeljena dejstva amlodipina" -k 5
 ```
 
-## 9. Tipican workflow
-
-### 1. Instalacija dependency-ja
-
-Ako koristis `uv`:
+Izmeri `precision@k` i `recall@k` nad golden pitanjima:
 
 ```powershell
-uv sync
+.\.venv\Scripts\python.exe src\diplomski\evaluate_retrieval.py -k 1 3 5 --show-results
 ```
 
-Ili preko pip-a:
+Pokreni RAG odgovor:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe src\diplomski\rag_pipeline.py "Koja su nezeljena dejstva amlodipina?" -k 5 --show-context
 ```
 
-### 2. Podesavanje Gemini kljuca
+Pokreni lokalni UI:
 
-Kopiraj `.env.example` u `.env` i unesi svoj API key:
+```powershell
+.\.venv\Scripts\streamlit.exe run src\diplomski\ui_app.py
+```
+
+Pokreni lokalne testove:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+## Environment
+
+`.env` treba da sadrzi:
 
 ```text
-GEMINI_API_KEY=your_real_key_here
+GEMINI_API_KEY=...
 GEMINI_MODEL=gemini-3.6-flash
+
+CHROMA_HOST=api.trychroma.com
+CHROMA_API_KEY=...
+CHROMA_TENANT=7017286c-bbfb-415f-b058-2b37f136fe70
+CHROMA_DATABASE=diplomski
 ```
 
-`.env` ne treba commitovati.
+`.env` se ne commituje.
 
-### 3. Izgradnja ChromaDB baze
+## Testovi
 
-```powershell
-.\.venv\Scripts\python.exe src\diplomski\vector_store.py --data-dir Literatura\Lekovi --device cuda
-```
+Testovi pokrivaju:
 
-Ako zelis CPU:
+- prepoznavanje tipa dokumenta,
+- loading PDF strana,
+- 6 standardnih sekcija za uputstva o lekovima,
+- cirilicna uputstva,
+- PDF outline za vodic,
+- pravila za interakcije lekova,
+- da chunk ne mesa dve sekcije,
+- da chunk ima `Document:` i `Section:` prefiks,
+- metadata polja `source`, `page`, `document_type`, `section_title`,
+- Chroma 16 KiB zastitu,
+- stabilan document id,
+- parent-child prosirenje rezultata,
+- tanak retriever,
+- RAG tok sa i bez pronadjenog konteksta.
 
-```powershell
-.\.venv\Scripts\python.exe src\diplomski\vector_store.py --data-dir Literatura\Lekovi --device cpu
-```
+## Napomena
 
-### 4. Test retrieval-a
-
-```powershell
-.\.venv\Scripts\python.exe src\diplomski\search_documents.py "Koja su nezeljena dejstva amlodipina?" --device cuda -k 5
-```
-
-### 5. Pokretanje RAG odgovora
-
-```powershell
-.\.venv\Scripts\python.exe src\diplomski\rag_pipeline.py "Koja su nezeljena dejstva amlodipina?" --embedding-device cuda -k 5
-```
-
-## 10. Glavna podesavanja
-
-Fajl: `src/diplomski/settings.py`
-
-```python
-DEFAULT_CHROMA_DIR = "chroma_db"
-DEFAULT_COLLECTION_NAME = "diplomski_rag"
-
-DEFAULT_EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-0.6B"
-DEFAULT_EMBEDDING_DEVICE = "auto"
-DEFAULT_EMBEDDING_BATCH_SIZE = 1
-DEFAULT_EMBEDDING_MAX_SEQ_LENGTH = 256
-
-DEFAULT_GEMINI_MODEL = "gemini-3.6-flash"
-DEFAULT_GEMINI_MAX_OUTPUT_TOKENS = 12000
-
-DEFAULT_TOP_K = 5
-DEFAULT_RETRIEVAL_CANDIDATE_POOL_SIZE = 60
-DEFAULT_MAX_CONTEXT_CHARS = 14000
-```
-
-Za slabiju graficku karticu ili CPU, najbitnije vrednosti su:
-
-- `DEFAULT_EMBEDDING_BATCH_SIZE`
-- `DEFAULT_EMBEDDING_MAX_SEQ_LENGTH`
-- `DEFAULT_EMBEDDING_DEVICE`
-
-## 11. Zasto je pipeline ovako podeljen
-
-Loading je odvojen od chunkinga zato sto su to razlicite odgovornosti.
-
-`data_loader.py` samo cita PDF i pravi Unstructured elemente. To olaksava debugging PDF ekstrakcije.
-
-`embedding_pipeline.py` odlucuje kako se elementi pripremaju za RAG: kako se tabele obogacuju kontekstom, kako se chunkuju tekstovi i kako nastaju LangChain `Document` objekti.
-
-`vector_store.py` cuva embeddinge u ChromaDB i nema logiku o PDF parsiranju.
-
-`retriever.py` se bavi pronalazenjem relevantnog konteksta.
-
-`rag_pipeline.py` spaja retrieval i LLM odgovor.
-
-Ova podela znaci da mozes posebno da testiras:
-
-- da li PDF parsing radi,
-- da li chunkovi izgledaju dobro,
-- da li ChromaDB vraca dobre rezultate,
-- da li Gemini daje odgovor na osnovu dobrog konteksta.
-
-## 12. Napomene
-
-Ovaj sistem pomaze u pretrazi dokumenata o lekovima, ali odgovor modela nije zamena za savet lekara ili farmaceuta.
-
-Kod treba posmatrati kao RAG demo za diplomski rad: ima loading, embedding, vector store, retrieval, prompt construction i LLM odgovor, ali u ozbiljnoj produkciji bi jos trebalo dodati evaluaciju, testove nad poznatim pitanjima, bolji monitoring i jasnije citiranje izvora po recenicama.
+Sistem je demo za diplomski rad i pomoc u pretrazi dokumenata. Odgovor modela
+nije zamena za savet lekara ili farmaceuta.

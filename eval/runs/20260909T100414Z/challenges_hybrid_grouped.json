@@ -1,0 +1,888 @@
+{
+  "variant": "challenges_hybrid_grouped",
+  "requested_hybrid": true,
+  "group_by_source": true,
+  "candidate_pool_size": 60,
+  "group_by_document_limit": 2,
+  "expand_to_parent": true,
+  "completed_cases": 4,
+  "summary": {
+    "1": {
+      "precision_at_k": 0.75,
+      "recall_at_k": 0.75,
+      "hit_at_k": 0.75,
+      "mrr_at_k": 0.75
+    },
+    "3": {
+      "precision_at_k": 0.25,
+      "recall_at_k": 0.75,
+      "hit_at_k": 0.75,
+      "mrr_at_k": 0.75
+    },
+    "5": {
+      "precision_at_k": 0.15000000000000002,
+      "recall_at_k": 0.75,
+      "hit_at_k": 0.75,
+      "mrr_at_k": 0.75
+    }
+  },
+  "latency_seconds": {
+    "min": 5.1301723000015045,
+    "median": 6.417374149999887,
+    "mean": 6.482414075000179,
+    "max": 7.964735699999437,
+    "p95_nearest_rank": 7.964735699999437
+  },
+  "cases": [
+    {
+      "id": "cyrillic_norvasc",
+      "question": "Која су нежељена дејства лека Норваск?",
+      "seconds": 7.203137200000128,
+      "metrics_by_k": {
+        "1": {
+          "id": "cyrillic_norvasc",
+          "question": "Која су нежељена дејства лека Норваск?",
+          "k": 1,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_at_k": 0.0,
+          "mrr_at_k": 0.0,
+          "relevant_results": 0,
+          "returned_results": 1,
+          "matched_expected": 0,
+          "expected_total": 1,
+          "missing_expected": [
+            "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+          ],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.011125541,
+              "file_name": "cefalexin-alkaloid.pdf",
+              "medicine_name": "Cefalexin alkaloid",
+              "active_substance": "cefaleksin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "3": {
+          "id": "cyrillic_norvasc",
+          "question": "Која су нежељена дејства лека Норваск?",
+          "k": 3,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_at_k": 0.0,
+          "mrr_at_k": 0.0,
+          "relevant_results": 0,
+          "returned_results": 2,
+          "matched_expected": 0,
+          "expected_total": 1,
+          "missing_expected": [
+            "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+          ],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.011125541,
+              "file_name": "cefalexin-alkaloid.pdf",
+              "medicine_name": "Cefalexin alkaloid",
+              "active_substance": "cefaleksin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.010429271,
+              "file_name": "nolpaza.pdf",
+              "medicine_name": "Nolpaza",
+              "active_substance": "pantoprazol",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "5": {
+          "id": "cyrillic_norvasc",
+          "question": "Која су нежељена дејства лека Норваск?",
+          "k": 5,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_at_k": 0.0,
+          "mrr_at_k": 0.0,
+          "relevant_results": 0,
+          "returned_results": 2,
+          "matched_expected": 0,
+          "expected_total": 1,
+          "missing_expected": [
+            "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+          ],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.011125541,
+              "file_name": "cefalexin-alkaloid.pdf",
+              "medicine_name": "Cefalexin alkaloid",
+              "active_substance": "cefaleksin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.010429271,
+              "file_name": "nolpaza.pdf",
+              "medicine_name": "Nolpaza",
+              "active_substance": "pantoprazol",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_1eaa0a5c7097ca7956a7e9f4",
+          "score": 0.011125541,
+          "chroma_score": -0.011125541,
+          "distance": null,
+          "text": "Lek: Cefalexin alkaloid\nAktivna supstanca: cefaleksin\nDocument: cefalexin-alkaloid.pdf\nSection: 4. Moguca nezeljena dejstva\n\n4. Могућа нежељена дејства\nКао и сви лекови, овај лек може да проузрокује нежељена дејства, иако она не морају да се јаве код \nсвих пацијената који узимају овај лек. \nСви лекови могу изазвати алергијске реакције, иако су озбиљне алергијске реакције веома ретке.\nОдмах се обратите свом лекару ако осетите нагло звиждање у грудима, отежано дисање, \nотицање капака, лица или усана, осип или свраб коже (нарочито уколико захвата цело тело).\nОзбиљна нежељена дејства\nСледећа нежељена дејства су озбиљна и уколико Вам се јаве, обуставите примену лека и одмах \nконтактирајте лекара:\n озбиљно љуштење коже или појава пликова на кожи;\n тежак пролив (дијареја) или продужено трајање дијареје након примене лека Cefalexin Alkaloid. \nОво може бити симптом озбиљног стања – псеудомембранозног колитиса;\n црвени, љуспасти, широко распрострањен осип са испупчењима и пликовима, који је праћен \nгрозницом-повишеном телесном температуром, а јавља се на почетку примене лека (акутна \nгенерализована егзантематозна пустулоза). Видети одељак 2.\nОстала нежељена дејства\n дијареја;\n мучнина;\n повраћање;\n поремећај варења (диспепсија);\n бол у желуцу;\n осип сличан малим богињама (сам);\n свраб;\n црвени печати на кожи (копривњача);\n осип са широко распрострањеним болом у зглобовима и/или укоченошћу, отеченим лимфним \nжлездама, грозницом (повишеном телесном температуром) и могуће замућеним урином;\n промене у крвној слици, могу се испољити у виду модрица или осећаја умора. Потребна је \nанализа крви како би се ово потврдило;\n оштећење јетре или бубрега које се открива лабораторијским тестовима крви и/или урина;\n жутица (жута пребојеност коже и беоњача);\n слабост;\n губитак свести;\n превелика узбуђеност;\n агитација;\n замор;\n главобоља;\n збуњеност;\n вртоглавица;\n видне и слушне обмане или опажање ствари које реално не постоје (халуцинације);\n свраб у пределу вагине или ануса изазван кандидијазом;\n запаљење вагине (вагинитис) са појачаном вагиналном секрецијом.\nПријављивање нежељених реакција\nУколико Вам се испољи било која нежељена реакција, потребно је да о томе обавестите лекара, \nфармацеута или медицинску сестру. Ово укључује и сваку могућу нежељену реакцију која није \nнаведена у овом упутству. Пријављивањем нежељених реакција можете да помогнете у процени \nбезбедности овог лека. Сумњу на нежељене реакције можете да пријавите Агенцији за лекове и \nмедицинска средства Србије (АЛИМС):\nАгенција за лекове и медицинска средства Србије\nНационални центар за фармаковигиланцу\n\n6 од 7\nВојводе Степе 458, 11221 Београд\nРепублика Србија\nwebsite: www.alims.gov.rs\ne-mail: nezeljene.reakcije@alims.gov.rs",
+          "metadata": {
+            "page_number": 5,
+            "folder": "cefaleksin",
+            "document_bytes": 4818,
+            "file_name": "cefalexin-alkaloid.pdf",
+            "content_type": "parent_section",
+            "active_substance": "cefaleksin",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\cefaleksin\\cefalexin-alkaloid.pdf",
+            "parent_id": "section_f102bbe26933bfc35af1",
+            "document_type": "medicine_leaflet",
+            "medicine_name": "Cefalexin alkaloid",
+            "file_type": ".pdf",
+            "original_chunk_index": 78,
+            "page_index": 0,
+            "cloud_subchunk_index": 0,
+            "page": 5,
+            "section_title": "4. Moguca nezeljena dejstva",
+            "cloud_chunk_index": 79,
+            "source_document_id": "source_7175e920c843bd134218",
+            "total_pages": 7,
+            "section_detection": "medicine_leaflet_headings",
+            "section_path": "4. Moguca nezeljena dejstva",
+            "section_id": "section_f102bbe26933bfc35af1",
+            "section_index": 4,
+            "page_numbers": [
+              5,
+              6
+            ],
+            "record_type": "parent",
+            "retrieved_child_id": "child_1eaa0a5c7097ca7956a7e9f4",
+            "retrieved_child_score": 0.011125541,
+            "retrieved_child_chunk_index": 0,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_f102bbe26933bfc35af1",
+          "child_text": "Lek: Cefalexin alkaloid\nAktivna supstanca: cefaleksin\nDocument: cefalexin-alkaloid.pdf\nSection: 4. Moguca nezeljena dejstva\n\n4. Могућа нежељена дејства\n\nКао и сви лекови, овај лек може да проузрокује нежељена дејства, иако она не морају да се јаве код\n\nсвих пацијената који узимају овај лек.\n\nСви лекови могу изазвати алергијске реакције, иако су озбиљне алергијске реакције веома ретке.\n\nОдмах се обратите свом лекару ако осетите нагло звиждање у грудима, отежано дисање,\n\nотицање капака, лица или усана, осип или свраб коже (нарочито уколико захвата цело тело).\n\nОзбиљна нежељена дејства\n\nСледећа нежељена дејства су озбиљна и уколико Вам се јаве, обуставите примену лека и одмах\n\nконтактирајте лекара:\n\n озбиљно љуштење коже или појава пликова на кожи;\n\n тежак пролив (дијареја) или продужено трајање дијареје након примене лека Cefalexin Alkaloid.\n\nОво може бити симптом озбиљног стања – псеудомембранозног колитиса;\n\n црвени, љуспасти, широко распрострањен осип са испупчењима и пликовима, који је праћен\n\nгрозницом-повишеном телесном температуром, а јавља се на почетку примене лека (акутна"
+        },
+        {
+          "id": "child_7e4b204a58d513f501621e4e",
+          "score": 0.010429271,
+          "chroma_score": -0.010429271,
+          "distance": null,
+          "text": "Lek: Nolpaza\nAktivna supstanca: pantoprazol\nDocument: nolpaza.pdf\nSection: 4. Moguca nezeljena dejstva\n\n4. Moguća neželjena dejstva\nKao i svi lekovi, ovaj lek može da prouzrokuje neželjena dejstva, iako ona ne moraju da se jave kod svih \npacijenata koji uzimaju ovaj lek.\nAko primetite bilo koje od sledećih navedenih neželjenih dejstava, prestanite sa uzimanjem leka i \nodmah o tome obavestite Vašeg lekara ili se obratite najbližoj službi hitne medicinske pomoći:\n Ozbiljne alergijske reakcije (učestalost-retko: mogu da se jave kod najviše 1 na 1000 pacijenata koji \nuzimaju lek): oticanje jezika i/ili grla, teškoće pri gutanju, koprivnjača, teškoće pri gutanju, koprivnjača, \notežano disanje, alergijski otok lica (Quincke-ov edem ili angioedem), jaka vrtoglavica praćena ubrzanim \nradom srca i obilnim znojenjem. \n Ozbiljni poremećaji kože (učestalost-nepoznato: ne može se proceniti na osnovu dostupnih podataka):\nmožete primetiti jedan ili više od sledećih simptoma: pojava plikova po koži i brzo pogoršanje opšteg stanja \norganizma, erozija (uključujući i neznatno krvarenje) očiju, nosa, usta/usana ili genitalija i osetljivost \nkože/osip pogotovu na delovima kože koji su izloženi suncu. Takođe možete osetiti bolove u zglobovima i \nsimptome sličnih gripu, povećanje telesne temperature, otečene žlezde (na primer pazuha) i analize krvi \nmogu pokazati promene broja belih krvnih zrnaca ili vrednosti enzima jetre (Stevens-Johnson ov sindrom, \nLyell--ov sindrom, multiformni eritem, subakutni kožni eritemski lupus, reakcija leka sa eozinofilijom i \nsistemskim simptomima (DRESS), i osetljivost na svetlost.\n Drugi ozbiljni poremećaji (učestalost-nepoznato): žuta prebojenost kože ili beonjača oka (teško\n\n6 od 8\noštećenje ćelija jetre, žutica) ili povećanje telesne temperature, osip kože, uvećanje bubrega ponekad praćeno \nbolnim mokrenjem i bolom u donjem delu leđa (ozbiljno zapaljenje bubrega), što može da dovede do \ninsuficijencije bubrega (otkazivanja rada bubrega).\nOstala poznata neželjena dejstva su:\n Česta (mogu da se jave kod najviše 1 na 10 pacijenata koji uzimaju lek): \nbenigni polipi u želucu.\n Povremena (mogu da se jave kod najviše 1 na 100 pacijenata koji uzimaju lek):\nglavobolja; vrtoglavica; proliv; povraćanje; nadimanje (gasovi); otežano pražnjenje creva; suva usta; bol i \nnelagodnost u trbuhu; osip kože, generalizovani osip (egzantem, erupcije); svrab; osećaj slabosti, \niscrpljenosti ili opšta malaksalost; poremećaj spavanja, preloma kuka, ručnog zglobaili kičme. \n Retka (mogu da se jave kod najviše 1 na 1000 pacijenata koji uzimaju lek):\n  promena ili nedostatak osećaja čula ukusa; poremećaj vida kao što je zamućen vid; koprivnjača; bol\n  u zglobovima; bolovi u mišićima; promena telesne mase; porast telesne temperature; groznica (visoka\n  telesna temperatura); oticanje nogu (periferni edemi); alergijske reakcije; depresija; uvećanje dojki kod \n  muškaraca. \n Veoma retka (mogu da se jave kod najviše 1 na 10000 pacijenata koji uzimaju lek): \n  dezorijentacija. \n Nepoznata učestalost (ne može se proceniti na osnovu dostupnih podataka):\nhalucinacija (vidite, čujete ili osećate stvari koje nisu prisutne), konfuzija (zbunjenost) (posebno kod \npacijenata koji su ove simptome imali i ranije); osećaj trnjenja ili bockanje, toplote, pečenja ili utrnulosti \nkože (parestezija); osip i mogućnost pojave bola u zglobovima, zapaljenje debelog creva što dovodi do \nučestalih vodenastih stolica.\nNeželjena dejstva koja se mogu uočiti na osnovu laboratorijskih analiza krvi:\n Povremena (mogu da se jave kod najviše 1 na 100 pacijenata koji uzimaju lek): \npovećanje vrednosti enzima jetre. \n Retka (mogu da se jave kod najviše 1 na 1000 pacijenata koji uzimaju lek): \npovećanje vrednosti bilirubina; povećanje masti u krvi; izraziti nagli pad jedne vrste belih krvnih zrnaca \n(granulocita) u cirkulaciji, praćen visokom telesnom temperaturom.\n Veoma retka (mogu da se jave kod najviše 1 na 10000 pacijenata koji uzimaju lek): \nsmanjenje broja trombocita (krvne pločice) koje kod Vas može prouzrokovati pojavu krvarenja ili modrica \nčešće nego obično; smanjenje broja belih krvnih ćelija (leukocita) koje kod Vas može prouzrokovati češću\npojavu infekcija; istovremeno smanjenje broja crvenih i belih krvnih ćelija, kao i krvnih pločica. \n Nepoznato (ne može se procenti na osnovu dostupnih podataka): \nsmanjene vrednosti natrijuma, magnezijuma, kalcijuma ili kalijuma u krvi (videti odeljak 2).\nPrijavljivanje neželjenih reakcija\nUkoliko Vam se ispolji bilo koja neželjena reakcija, potrebno je da o tome obavestite lekara ili farmaceuta ili \nmedicinsku sestru. Ovo uključuje i svaku moguću neželjenu reakciju koja nije navedena u ovom uputstvu. \nPrijavljivanjem neželjenih reakcija možete da pomognete u proceni bezbednosti ovog leka. Sumnju na \nneželjene reakcije možete da prijavite Agenciji za lekove i medicinska sredstva Srbije (ALIMS):\nAgencija za lekove i medicinska sredstva Srbije\nNacionalni centar za farmakovigilancu\nVojvode Stepe 458, 11221 Beograd\nRepublika Srbija\nwebsite: www.alims.gov.rs\ne-mail: nezeljene.reakcije@alims.gov.rs",
+          "metadata": {
+            "cloud_subchunk_index": 0,
+            "page_numbers": [
+              5,
+              6
+            ],
+            "record_type": "parent",
+            "cloud_chunk_index": 163,
+            "total_pages": 8,
+            "document_bytes": 5247,
+            "page_number": 5,
+            "page_index": 0,
+            "original_chunk_index": 162,
+            "section_id": "section_a8f1cdce164f1cd834e4",
+            "document_type": "medicine_leaflet",
+            "medicine_name": "Nolpaza",
+            "active_substance": "pantoprazol",
+            "folder": "pantoprazol",
+            "content_type": "parent_section",
+            "section_title": "4. Moguca nezeljena dejstva",
+            "section_index": 4,
+            "file_type": ".pdf",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\pantoprazol\\nolpaza.pdf",
+            "section_path": "4. Moguca nezeljena dejstva",
+            "page": 5,
+            "file_name": "nolpaza.pdf",
+            "source_document_id": "source_ef1ae6fdbf02892158ee",
+            "section_detection": "medicine_leaflet_headings",
+            "parent_id": "section_a8f1cdce164f1cd834e4",
+            "retrieved_child_id": "child_7e4b204a58d513f501621e4e",
+            "retrieved_child_score": 0.010429271,
+            "retrieved_child_chunk_index": 4,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_a8f1cdce164f1cd834e4",
+          "child_text": "Lek: Nolpaza\nAktivna supstanca: pantoprazol\nDocument: nolpaza.pdf\nSection: 4. Moguca nezeljena dejstva\n\nčujete ili osećate stvari koje nisu prisutne), konfuzija (zbunjenost) (posebno kod\n\npacijenata koji su ove simptome imali i ranije); osećaj trnjenja ili bockanje, toplote, pečenja ili utrnulosti\n\nkože (parestezija); osip i mogućnost pojave bola u zglobovima, zapaljenje debelog creva što dovodi do\n\nučestalih vodenastih stolica.\n\nNeželjena dejstva koja se mogu uočiti na osnovu laboratorijskih analiza krvi:\n\n Povremena (mogu da se jave kod najviše 1 na 100 pacijenata koji uzimaju lek):\n\npovećanje vrednosti enzima jetre.\n\n Retka (mogu da se jave kod najviše 1 na 1000 pacijenata koji uzimaju lek):\n\npovećanje vrednosti bilirubina; povećanje masti u krvi; izraziti nagli pad jedne vrste belih krvnih zrnaca\n\n(granulocita) u cirkulaciji, praćen visokom telesnom temperaturom.\n\n Veoma retka (mogu da se jave kod najviše 1 na 10000 pacijenata koji uzimaju lek):\n\nsmanjenje broja trombocita (krvne pločice) koje kod Vas može prouzrokovati pojavu krvarenja ili modrica"
+        }
+      ],
+      "prompt_context_characters": 8295,
+      "context_document_headers": 2,
+      "child_body_fully_in_prompt": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "english_xanax_missed_dose",
+      "question": "What should I do if I miss a dose of Xanax?",
+      "seconds": 7.964735699999437,
+      "metrics_by_k": {
+        "1": {
+          "id": "english_xanax_missed_dose",
+          "question": "What should I do if I miss a dose of Xanax?",
+          "k": 1,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 1,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=3. Kako se uzima lek"
+              ],
+              "score": 0.016052227,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "3": {
+          "id": "english_xanax_missed_dose",
+          "question": "What should I do if I miss a dose of Xanax?",
+          "k": 3,
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 2,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=3. Kako se uzima lek"
+              ],
+              "score": 0.016052227,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.009084429,
+              "file_name": "euthyrox.pdf",
+              "medicine_name": "Euthyrox",
+              "active_substance": "levotiroksin natrijum",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "5": {
+          "id": "english_xanax_missed_dose",
+          "question": "What should I do if I miss a dose of Xanax?",
+          "k": 5,
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 2,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=3. Kako se uzima lek"
+              ],
+              "score": 0.016052227,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.009084429,
+              "file_name": "euthyrox.pdf",
+              "medicine_name": "Euthyrox",
+              "active_substance": "levotiroksin natrijum",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_037b376d0254b7a614c4ff0a",
+          "score": 0.016052227,
+          "chroma_score": -0.016052227,
+          "distance": null,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 3. Kako se uzima lek\n\n3. Kako se uzima lek Xanax\nUvek uzimajte ovaj lek tačno onako kako Vam je to objasnio Vaš lekar ili farmaceut. Ukoliko niste sigurni \nproverite sa Vašim lekarom ili farmaceutom.\n Lečenje anksioznosti\nPreporučena početna doza je 0,25 mg do 0,5 mg, tri puta dnevno.\nDoza se može postepeno povećati do maksimalne dnevne doze od 4 mg, koja se uzima podeljena u više \ndoza. Prvo se povećava večernja doza, a zatim doza koja se uzima u toku dana.\nPrimena kod starijih pacijenata, pacijenata sa poremećajem funkcije jetre i bubrega i/ili iscrpljenih \npacijenata\nPreporučena početna doza je 0,25 mg, 2 do 3 puta dnevno. \nTrajanje terapije lekom Xanax treba da bude što je moguće kraće.\nPreporuka je da terapija traje najduže 2 do 4 nedelje. Ne preporučuje se dugotrajna terapija. Vaš lekar će \nodlučiti da li treba da nastavite terapiju nakon maksimalno preporučenog perioda.\nAko ste uzeli više leka Xanax nego što treba\nUkoliko ste uzeli previše leka Xanax, odmah se javite lekaru ili idite do najbliže službe hitne pomoći.\n− U blagim slučajevima, simptomi predoziranja mogu biti: mentalna konfuzija, pospanost i otežan \ngovor.\n− U težim slučajevima, simptomi predoziranja mogu biti: gubitak koordinacije pokreta, slab tonus \nmišića, nizak krvni pritisak, teškoće u disanju, koma i smrt.\nAko ste zaboravili da uzmete lek Xanax\nAko ste zaboravili da uzmete propisanu dozu leka, odmah uzmite propuštenu dozu, osim ako nije blizu\nvreme za sledeću dozu. Ne uzimajte duplu dozu da biste nadoknadili propuštenu dozu.\nAko naglo prestanete da uzimate lek Xanax\nNemojte naglo prestajati da uzimate lek Xanax. Uvek se konsultujte sa Vašim lekarom pre nego što\nprestanete da uzimate lek Xanax. Prilikom prekida terapije neophodno je postepeno smanjivati dozu leka da \nbi se izbegli:\n apstinencijalni simptomi kao što su:\n- teški simptomi: osećaj odvajanja od sebe ili ostatka sveta, utrnulost ili peckanje u rukama ili nogama, \npojačana osetljivost na svetlost, zvuke i fizički kontakt, halucinacije, epileptični napadi, grčevi u \nmišićima i stomaku, povraćanje, znojenje, podrhtavanje, tremor ili konvulzije;\n\n6 od 9\n- drugi simptomi: glavobolja, bol u mišićima, uznemirenost, napetost, nemir, konfuzija, razdražljivost, \nstanje blage depresije, nesanica;\n povratni efekat sa simptomima kao što su anksioznost. Ovi simptomi su isti kao i oni zbog kojih Vam\nje propisan lek Xanax, a mogu se privremeno ponovo javiti sa pojačanim intenzitetom pri naglom\nprekidu terapije.\nAko imate dodatnih pitanja o primeni ovog leka, obratite se Vašem lekaru ili farmaceutu.",
+          "metadata": {
+            "original_chunk_index": 21,
+            "record_type": "parent",
+            "document_bytes": 2704,
+            "folder": "alprazolam",
+            "file_name": "xanax.pdf",
+            "page_number": 5,
+            "file_type": ".pdf",
+            "page": 5,
+            "page_index": 0,
+            "document_type": "medicine_leaflet",
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "page_numbers": [
+              5,
+              6
+            ],
+            "section_title": "3. Kako se uzima lek",
+            "parent_id": "section_09fed273adeb1ce0f47d",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "medicine_name": "Xanax",
+            "total_pages": 9,
+            "section_detection": "medicine_leaflet_headings",
+            "section_id": "section_09fed273adeb1ce0f47d",
+            "cloud_subchunk_index": 0,
+            "section_index": 3,
+            "cloud_chunk_index": 22,
+            "section_path": "3. Kako se uzima lek",
+            "active_substance": "alprazolam",
+            "content_type": "parent_section",
+            "retrieved_child_id": "child_037b376d0254b7a614c4ff0a",
+            "retrieved_child_score": 0.016052227,
+            "retrieved_child_chunk_index": 0,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_09fed273adeb1ce0f47d",
+          "child_text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 3. Kako se uzima lek\n\n3. Kako se uzima lek Xanax\n\nUvek uzimajte ovaj lek tačno onako kako Vam je to objasnio Vaš lekar ili farmaceut. Ukoliko niste sigurni\n\nproverite sa Vašim lekarom ili farmaceutom.\n\n Lečenje anksioznosti\n\nPreporučena početna doza je 0,25 mg do 0,5 mg, tri puta dnevno.\n\nDoza se može postepeno povećati do maksimalne dnevne doze od 4 mg, koja se uzima podeljena u više\n\ndoza. Prvo se povećava večernja doza, a zatim doza koja se uzima u toku dana.\n\nPrimena kod starijih pacijenata, pacijenata sa poremećajem funkcije jetre i bubrega i/ili iscrpljenih\n\npacijenata\n\nPreporučena početna doza je 0,25 mg, 2 do 3 puta dnevno.\n\nTrajanje terapije lekom Xanax treba da bude što je moguće kraće.\n\nPreporuka je da terapija traje najduže 2 do 4 nedelje. Ne preporučuje se dugotrajna terapija. Vaš lekar će\n\nodlučiti da li treba da nastavite terapiju nakon maksimalno preporučenog perioda.\n\nAko ste uzeli više leka Xanax nego što treba"
+        },
+        {
+          "id": "child_68c544b88ac9377c9dffed91",
+          "score": 0.009084429,
+          "chroma_score": -0.009084429,
+          "distance": null,
+          "text": "Lek: Euthyrox\nAktivna supstanca: levotiroksin natrijum\nDocument: euthyrox.pdf\nSection: 3. Kako se uzima lek\n\n3. Kako se uzima lek Euthyrox\nLek Euthyrox uvek uzimajte tačno onako kako Vam je to objasnio Vaš lekar ili farmaceut. Ukoliko niste \nsigurni, proverite sa Vašim lekarom ili farmaceutom.\nVaš lekar će odrediti Vašu individualnu dozu na osnovu pregleda i rezultata laboratorijskih testova. \nUopšteno, terapija se započinje malom dozom, koja se postepeno povećava na svake 2 – 4 nedelje, dok se ne \npostigne potpuna individualna doza. Tokom početnih nedelja terapije imaćete kontrolne laboratorijske \ntestove u cilju prilagođavanja doze.\nUkoliko je Vaša beba rođena sa hipotireoidizmom, Vaš lekar Vam može preporučiti da počnete sa većom \ndozom jer je važno da se obezbedi brza nadoknada. Preporučena početna doza je 10 do 15 mikrograma po\nkilogramu telesne mase za prva 3 meseca. Nakon toga, Vaš lekar će dozu prilagoditi individualno.\nOpseg uobičajenih doza je prikazan u tabeli ispod. Manje individualne doze mogu biti dovoljne:\n- ako ste stariji pacijent,\n- ako imate srčanih problema,\n- ako imate teško ili dugotrajno smanjenje funkcije štitaste žlezde,\n- ako imate malu telesnu masu ili veliku strumu.\nPrimena leka Euthyrox Preporučena dnevna doza leka Euthyrox\n- terapija benigne strume kod \npacijenata sa očuvanom funkcijom\nštitaste žlezde\n75 – 200 mikrograma\n- sprečavanje ponovne pojave \nstrume nakon operacije\n75 – 200 mikrograma\n- nadoknada prirodnih hormona\nštitaste žlezde, kada ih Vaša \nštitasta žlezda ne stvara dovoljno\n- početna doza\n- doza održavanja\nodrasli\n25-50 mikrograma\n100-200 mikrograma\ndeca\n12,5-50 mikrograma\n100-150 mikrograma po m2\ntelesne površine\n- potiskivanje rasta tumora kod \npacijenata sa malignim \noboljenjem štitaste žlezde\n150 – 300 mikrograma\n\n6 od 8\n- uspostavljanje ravnoteže hormona\nštitaste žlezde, kada se \nprekomerno stvaranje hormona \nleči antitireoidnim lekovima\n50 – 100 mikrograma\n    - ispitivanje funkcije štitaste žlezde 200 mikrograma (2 tablete) počevši 2 nedelje pre   \nispitivanja\nPrimena\nLek Euthyrox je namenjen za oralnu upotrebu.\nUzmite pojedinačnu dnevnu dozu na prazan stomak ujutru (najmanje pola sata pre doručka), po mogućstvu \nsa malo tečnosti, na primer sa pola čaše vode.\nDeci se može dati cela dnevna doza leka Euthyrox najmanje pola sata pre prvog dnevnog obroka. \nNeposredno pre primene, tabletu razdrobite i pomešajte sa malo vode i dajte detetu sa nešto više tečnosti. \nOvu smešu uvek pravite svežu, neposredno pre primene.\nTrajanje terapije\nTrajanje terapije može da varira u zavisnosti od stanja zbog koga se lek Euthyrox uzima. Vaš lekar će zbog \ntoga sa Vama porazgovarati koliko dugo treba da ga uzimate. Većina pacijenata treba da uzima lek Euthyrox \ndoživotno.\nAko ste uzeli više leka Euthyrox nego što treba\nUkoliko ste uzeli veću dozu od propisane, možete osetiti simptome kao što su ubrzan srčani rad, anksioznost, \nuznemirenost ili nevoljni pokreti. Kod pacijenata sa neurološkim poremećajem kao što je epilepsija, \nkonvulzije (grčevi) se mogu pojaviti u izolovanim slučajevima. Kod pacijenata sa rizikom za nastanak \npsihotičnih poremećaja, mogu se pojaviti simptomi akutne psihoze. Ukoliko se bilo šta od navedenog \ndogodi, obratite se Vašem lekaru.\nAko ste zaboravili da uzmete lek Euthyrox\nNe uzimajte duplu dozu da biste nadoknadili propuštenu tabletu, već narednog dana uzmite normalnu dozu.\nAko imate bilo kakvih dodatnih pitanja o primeni ovog leka, obratite se svom lekaru ili farmaceutu.",
+          "metadata": {
+            "file_name": "euthyrox.pdf",
+            "original_chunk_index": 133,
+            "record_type": "parent",
+            "page_index": 0,
+            "folder": "levotiroksin-natrijum",
+            "page": 5,
+            "document_type": "medicine_leaflet",
+            "cloud_chunk_index": 134,
+            "active_substance": "levotiroksin natrijum",
+            "medicine_name": "Euthyrox",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\levotiroksin-natrijum\\euthyrox.pdf",
+            "section_index": 3,
+            "content_type": "parent_section",
+            "page_numbers": [
+              5,
+              6
+            ],
+            "section_path": "3. Kako se uzima lek",
+            "section_title": "3. Kako se uzima lek",
+            "section_detection": "medicine_leaflet_headings",
+            "cloud_subchunk_index": 0,
+            "source_document_id": "source_6fa5be80bb15b001c097",
+            "document_bytes": 3586,
+            "parent_id": "section_411289381e0bdd00c4dc",
+            "file_type": ".pdf",
+            "total_pages": 8,
+            "section_id": "section_411289381e0bdd00c4dc",
+            "page_number": 5,
+            "retrieved_child_id": "child_68c544b88ac9377c9dffed91",
+            "retrieved_child_score": 0.009084429,
+            "retrieved_child_chunk_index": 3,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_411289381e0bdd00c4dc",
+          "child_text": "Lek: Euthyrox\nAktivna supstanca: levotiroksin natrijum\nDocument: euthyrox.pdf\nSection: 3. Kako se uzima lek\n\nviše tečnosti.\n\nOvu smešu uvek pravite svežu, neposredno pre primene.\n\nTrajanje terapije\n\nTrajanje terapije može da varira u zavisnosti od stanja zbog koga se lek Euthyrox uzima. Vaš lekar će zbog\n\ntoga sa Vama porazgovarati koliko dugo treba da ga uzimate. Većina pacijenata treba da uzima lek Euthyrox\n\ndoživotno.\n\nAko ste uzeli više leka Euthyrox nego što treba\n\nUkoliko ste uzeli veću dozu od propisane, možete osetiti simptome kao što su ubrzan srčani rad, anksioznost,\n\nuznemirenost ili nevoljni pokreti. Kod pacijenata sa neurološkim poremećajem kao što je epilepsija,\n\nkonvulzije (grčevi) se mogu pojaviti u izolovanim slučajevima. Kod pacijenata sa rizikom za nastanak\n\npsihotičnih poremećaja, mogu se pojaviti simptomi akutne psihoze. Ukoliko se bilo šta od navedenog\n\ndogodi, obratite se Vašem lekaru.\n\nAko ste zaboravili da uzmete lek Euthyrox\n\nNe uzimajte duplu dozu da biste nadoknadili propuštenu tabletu, već narednog dana uzmite normalnu dozu."
+        }
+      ],
+      "prompt_context_characters": 6553,
+      "context_document_headers": 2,
+      "child_body_fully_in_prompt": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "norvasc_grapefruit",
+      "question": "Da li uz Norvasc sme sok od grejpfruta?",
+      "seconds": 5.1301723000015045,
+      "metrics_by_k": {
+        "1": {
+          "id": "norvasc_grapefruit",
+          "question": "Da li uz Norvasc sme sok od grejpfruta?",
+          "k": 1,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 1,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.0165847,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "3": {
+          "id": "norvasc_grapefruit",
+          "question": "Da li uz Norvasc sme sok od grejpfruta?",
+          "k": 3,
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 2,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.0165847,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.012003129,
+              "file_name": "interakcije-lekova.pdf",
+              "medicine_name": null,
+              "active_substance": null,
+              "section_title": "Interakcije lekova sa hranom",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "5": {
+          "id": "norvasc_grapefruit",
+          "question": "Da li uz Norvasc sme sok od grejpfruta?",
+          "k": 5,
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 2,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.0165847,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.012003129,
+              "file_name": "interakcije-lekova.pdf",
+              "medicine_name": null,
+              "active_substance": null,
+              "section_title": "Interakcije lekova sa hranom",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_c877664aa2d514467b707963",
+          "score": 0.0165847,
+          "chroma_score": -0.0165847,
+          "distance": null,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\n2. Šta treba da znate pre nego što uzmete lek Norvasc\nLek Norvasc ne smete uzimati:\n ukoliko ste a lergični (preosetljivi) na amlodipin ili na bilo koju od pomoćnih supstanci ovog leka \n(navedene u odeljku 6) ili bilo koji drugi lek iz grupe antagonista kalcijuma. Alergijska reakcija se \nmože ispoljiti kao svrab i crvenilo kože ili kao otežano disanje.\n ukoliko imate težak stepen sniženja krvnog pritiska (hipotenzije). \n ukoliko imate suženje aortnih zalistaka (aortnu stenozu) ili kardiogeni šok (stanje kada srce ne može \nda obezbedi dovoljno krvi organizmu).\n ukoliko bolujete od srčane slabosti nakon preležanog srčanog napada.\nUpozorenja i mere opreza\nRazgovarajte sa Vašim lekarom ili farmaceutom pre nego što uzmete lek Norvasc. \nMorate obavestiti Vašeg lekara ukoliko ste imali ili imate bilo koje od sledećih stanja:\n skorašnji srčani udar\n srčanu slabost \n povišenje krvnog pritiska teškog stepena (hipertenzivna kriza)\n oboljenje jetre \n ako ste starija osoba, u slučaju da Vam je potrebno povećanje doze leka.\nDeca i adolescenti\nPrimena leka Norvasc nije ispitivana kod dece mlađe od 6 godina. Lek Norvasc se koristi samo za lečenje \npovišenog krvnog pritiska kod dece i adolescenata uzrasta od 6 do 17 godina (vidite odeljak 3). \nZa detaljnije informacije obratite se Vašem lekaru.\nDrugi lekovi i lek Norvasc\nObavestite Vašeg lekara ili farmaceuta ukoliko uzimate, donedavno ste uzimali ili ćete možda uzimati bilo \nkoje druge lekove.\nNeki lekovi mogu uticati na dejstvo leka Norvasc, a takođe i lek Norvasc može uticati na dejstvo drugih \nlekova, kao što su:\n ketokonazol, itrakonazol (lekovi za terapiju gljivičnih infekcija) \n ritonavir, indinavir, nelfinavir (tzv. inhibitori proteaze, lekovi za terapiju HIV infekcije) \n rifampicin, eritromicin, klaritromicin (antibiotici) \n Hypericum perforatum (kantarion) \n verapamil, diltiazem (lekovi za srce) \n dantrolen (primenjuje se u obliku infuzije za lečenje teških poremećaja telesne temperature) \n takrolimus, sirolimus, temsirolimus i everolimus (lekovi koji menjaju način na koji Vaš imunski \nsistem radi )\n\n3 od 7\n simvastatin (lek za snižavanje vrednosti holesterola)\n ciklosporin (imunosupresiv)\nUticaj leka Norvasc na sniženje krvnog pritiska je izraženiji ukoliko već uzimate druge lekove za lečenje \npovišenog krvnog pritiska.\nUzimanje leka Norvasc sa hranom i pićima\nDok uzimate l ek Norvasc ne treba da konzumirate grejpfrut, niti sok od grejpfruta. Grejpfrut i sok od \ngrejpfruta mogu dovesti do povećanja koncentracije aktivne supstance amlodipin u krvi, što može izazvati \nnepredvidivi efekat leka Norvasc na sniženje krvnog pritiska.\nTrudnoća i dojenje\nTrudnoća\nNije utvrđena bezbednost primene amlodipina u trudnoći. Ukoliko ste trudni, mislite da ste t rudni ili \nplanirate trudnoću, obratite se Vašem lekaru ili farmaceutu za savet pre nego što uzmete ovaj lek.\nDojenje\nAmlodipin se izlučuje u majčino mleko u malim količinama. Ukoliko dojite ili planirate da dojite dete,\nobratite se Vašem lekaru pre nego što počnete da uzimate lek Norvasc.\nPre nego što počnete da uzimate neki lek, posavetujte se sa Vašim lekarom ili farmaceutom.\nUpravljanje vozilima i rukovanje mašinama \nLek Norvasc može da utiče na sposobnost upravljanja vozilima i rukovanja mašinama. Ukoliko osetite \nmučninu, vrtoglavicu, zamor ili glavobolju, nemojte upravljati vozilom, niti rukovati mašinama i odmah se \nobratite lekaru.  \nVažne informacije o nekim sastojcima leka Norvasc  \nOvaj lek sadrži manje od 1 mmol natrijuma (23 mg) po tableti, odnosno u suštini je „bez natrijuma“.",
+          "metadata": {
+            "file_type": ".pdf",
+            "content_type": "parent_section",
+            "section_detection": "medicine_leaflet_headings",
+            "folder": "amlodipin",
+            "page_number": 2,
+            "page_numbers": [
+              2,
+              3
+            ],
+            "medicine_name": "Norvasc",
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "document_type": "medicine_leaflet",
+            "record_type": "parent",
+            "cloud_subchunk_index": 0,
+            "parent_id": "section_28f0eaa36b0f5c247ad1",
+            "original_chunk_index": 27,
+            "cloud_chunk_index": 28,
+            "section_id": "section_28f0eaa36b0f5c247ad1",
+            "document_bytes": 3797,
+            "section_index": 2,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "total_pages": 7,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "page_index": 0,
+            "active_substance": "amlodipin",
+            "page": 2,
+            "file_name": "norvasc.pdf",
+            "retrieved_child_id": "child_c877664aa2d514467b707963",
+            "retrieved_child_score": 0.0165847,
+            "retrieved_child_chunk_index": 2,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_28f0eaa36b0f5c247ad1",
+          "child_text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\ndrugih\n\nlekova, kao što su:\n\n ketokonazol, itrakonazol (lekovi za terapiju gljivičnih infekcija)\n\n ritonavir, indinavir, nelfinavir (tzv. inhibitori proteaze, lekovi za terapiju HIV infekcije)\n\n rifampicin, eritromicin, klaritromicin (antibiotici)\n\n Hypericum perforatum (kantarion)\n\n verapamil, diltiazem (lekovi za srce)\n\n dantrolen (primenjuje se u obliku infuzije za lečenje teških poremećaja telesne temperature)\n\n takrolimus, sirolimus, temsirolimus i everolimus (lekovi koji menjaju način na koji Vaš imunski\n\nsistem radi )\n\n3 od 7\n\n simvastatin (lek za snižavanje vrednosti holesterola)\n\n ciklosporin (imunosupresiv)\n\nUticaj leka Norvasc na sniženje krvnog pritiska je izraženiji ukoliko već uzimate druge lekove za lečenje\n\npovišenog krvnog pritiska.\n\nUzimanje leka Norvasc sa hranom i pićima\n\nDok uzimate l ek Norvasc ne treba da konzumirate grejpfrut, niti sok od grejpfruta. Grejpfrut i sok od"
+        },
+        {
+          "id": "child_a6c5e2023cc6537bd640873c",
+          "score": 0.012003129,
+          "chroma_score": -0.012003129,
+          "distance": null,
+          "text": "Document: interakcije-lekova.pdf\nSection: Interakcije lekova sa hranom\n\nInterakcije lekova sa hranom \nHrana i nutrijenti mogu stupati u interakcije sa le kovima, što može dovesti do neželjenih \nishoda. O interakciji hrana/lek govorimo kada hrana , odnosno njena komponenta, uti če na \nefikasnost i/ili bezbednost leka u organizmu. Inter akcija lek/nutrijent nastaje kada lek uti če \nna iskoriš ćenje nutrijenta od strane organizma. U faktore koji  uti ču na interakcije hrana/lek \nili lek/nutrijent ubrajaju se: starost, pol, zdravs tveno stanje, nutritivni status, broj lekova u \nterapiji i dr.  \nInterakcija hrane i leka se naj češ će dešava u procesu resorpcije, usled čega se menja, \nnaj češ će smanjuje, efikasnost leka. Nutrijenti mogu uticat i na efikasnost leka ili na njegovu \nekskreciju. Lekovi koji se primenjuju oralno, resor buju se u GIT-u i često se u tom procesu \ntakmi če sa nutrijentima za resorpciju. Intestinalna mukoza je zna čajan metaboli čki organ za \nlekove poput ciklosporina, nifedipina i dr. čiji metabolizam zavisi od zdravstvenog statusa \ncreva. Obzirom na prirodu metabolizma u GIT-u, uopš teno se može re ći da zdravlje \nintestinalne mukoze najviše uti če na lekove koji se metabolišu izoenzimom CYP3A4 i \nzavise od P-gp.  \nVoće i povr će može uticati na metabolizam lekova indukcijom ili  inhibicijom izoenzima \nCYP450. \n• Krajem devedesetih godina XX veka je slu čajno otkrivena interakcija soka od \ngrejpfruta i felodipina. Utvr đeno je da je sok od grejpfruta inhibitor izoenzima \nCYP3A4 i CYP1A2 i da može uzrokovati smanjenje klir ensa mnogih lekova poput \nciklosporina, estrogena, benzodiazepina, simvastati na, sakinavira, buspirona i dr.\n\n18 \nTako đe, pretpostavlja se da redovna primena soka od grej pfruta smanjuje ekspresiju \nCYP3A4 u gastrointestinalnom traktu i doprinosi interakcijama. \n• Hrana bogata vitaminom K poput kupusa, prokelja, sa late, spana ća, avokada, \ndžigerice i dr. može antagonizovati dejstvo varfarina. Stoga je važno regulisati unos \nhrane bogate vitaminom K, kako bi se izbegle velike  fluktuacije u unosu ovog \nvitamina. \n• Povr će poput kupusa, brokolija i prokelja indukuje izoen zim CYP1A2 dok \nšargarepa i celer inhibiraju ovaj izoenzim. Obzirom  da je CYP1A2 uklju čen u \nmetabolizam lekova poput klozapina, teofilina i var farina, pretpostavlja se da \nnavededno povr će može uticati na metabolizam lekova. \n• Nasuprot tome, kofein je substrat za CYP1A2 pa leko vi koji inhibiraju ovaj \nizoenzim poput fluvoksamina ili cimetidina mogu dov esti do poja čanog efekta \nkofeina. \n• Interakcije hrana/lek mogu biti i fatalne poput int erakcije inhibitora \nmonoaminooksidaze (MAOI) i hrane bogate tiraminom, koja može uzrokovati \npalpitacije, znojenje, glavobolje i hipertenzivne k rize koje mogu rezultirati komom \nili smr ću usled moždanih krvarenja. \n• Istraživanja su pokazala da hrana bogata glikoalkal oidima solanacea poput \nparadajza, krompira i plavog patlidžana, produžava dejstvo anestetika pa se ne \npreporu čuje unos navedenih namirnica nekoliko dana pre hirurškog zahvata. \n• Ve ć je odavno poznato da tetracikline ne treba primenj ivati sa mlekom i mle čnim \nproizvodima, zbog stvaranja helatnih kompleksa usle d kojih je smanjena resorpcija \ntetraciklina. Me đutim, u današnje vreme treba voditi ra čuna i o preparatima za \nsuplementaciju koji sadrže kalcijum.  \nKao što je ve ć napomenuto lekovi, kao i bolesti, mogu uticati i n a nutritivni status \npacijenta. Pojedini lekovi uti ču na resorpciju nutrijenta dok drugi uti ču na iskoristljivost \nodnosno izlu čivanje nutrijenta posebno vitamina i minerala. Za r azliku od interakcija \nhrana/lek koje se ispituju u preregistracionim klin i čkim studijama i relativno lako otkrivaju \nu studijama faze IV kod hospitalizovanih pacijenata , interakcije lek/nutrijent je veoma \nteško prepoznati, utvrditi i pratiti. Nedostatak nu trijenta se može manifestovati posle više \nmeseci ili godina i često je pra ćen nespecifi čnim simptomima, koji se pripisuju bolesti ili \nprocesu starenja organizma. \nPrimeri interakcija: \n• Gospo đa S.L., 67-godina primenjuje metformin 1000 mg, 2x1 , i glibenklamid 5 mg \n2x1. Vrednost HbA1c je 9.3%, zbog čega se razmatra uvo đenje insulina u terapiju. \nLaboratorijski nalazi ukazuju na normalne vrednosti  kalcijuma ali postoji \nnedostatak vitamina D. U terapiju se, umesto insuli na, uvodi suplementacija \nvitaminom D (2000 IJ) i zakazuje se kontrola za 3 m eseca. Nakon 3 meseca HbA1c \niznosi 8,2%. \nIstraživanja ukazuju na povezanost hipovitaminoze D  vitamina i insulinske \nrezistencije. Suplementacija vitaminom D može doves ti do poboljšanja insulinske \nrezistencije i osetljivosti na insulin kod pacijena ta sa nedostatkom vitamina D, što \ndalje može rezultirati smanjenjm vrednosti HbA1c i boljom kontrolom dijabetesa \n• Smatra se da hroni čna terapija kardiovaskularnim lekovima najviše ugro žava \nnutritivni status. Iako je prepoznat efekat pojedin ih diuretika na gubitak kalijuma, \nmanje pažnje se posve ćuje izlu čivanju drugih elektrolita, minerala i hidrosolubiln ih \nvitamina. Usled toga se često zanemaruje negativan uticaj diuretika na nutri titivni\n\n19 \nstatus koji za posledicu ima poreme ćaj rada srca. Tako npr. nedostatak tiamina, koji \nje neophodan za normalnu ishranu sr čanog miši ća i rad srca, zapažen je kod \npacijenata sa sr čanom insuficijencijom koji su le čeni diureticima Henleove petlje. \nNedostatak tiamina uti če na loš apetit koji dovodi do daljeg pogoršanja nu tritivnog \nstatusa. \n• Smatra se da kortikosteroidi mogu uzrokovati nedost atak vitamina C, antibiotici \nusled disrupcije crevne flore mogu dovesti do manjk a vitamina B i K. Salicilati i \nvitamin C se bore za ista mesta vezivanja, što uzro kuje nedostatak vitamina C, a \nsam vitamin C može smanjiti efikasnost antibiotika. \n• Antiepileptici poput fenobarbitona, fenitoina i primidona mogu uzrokovati dijareju i \nsmanjen unos hrane, što dalje može imati za posledi cu smanjenu raspoloživost \nmnogih nutrijenata. Ovi lekovi tako đe „troše“ vitamin D pa se može javiti potreba \nza suplementacijom. Tako đe, mnogi antiepileptici smanjuju sadržaj folne kise line. \nMe đutim, suplementi folne kiseline uti ču na koncentraciju ovih lekova u krvi što \nzahteva nadzor lekara i farmaceuta u toku suplementacije. \n• Antacidi i H 2 blokatori – kod dugotrajne upotrebe mogu uzrokovat i poreme ćaje u \nnutritivnom statusu usled neutralizacije ili smanje ne produkcije hlorovodoni čne \nkiseline. Kod starijih pacijenata je fiziološki, us led smanjene produkcije \nhlorovodoni čne kiseline, smanjena resorpcija vitamina B 12.  Primena antacida ili H 2 \nblokatora kod ovih pacijenata može dodatno pogoršati resorpciju vitamina B 12, pa se \nmože javiti potreba za suplementacijom. \n• Laksativi – skra ćuju raspoloživo vreme resorpcije za nutrijente. Pre komerna \nupotreba laksativa može dovesti do nedovoljne raspo loživosti vitamina i minerala \npotrebnih za normalno funkcionisanje organizma. Lak sativi tako đe mogu pove ćati \ngubitak te čnosti i dovesti do dehidratacije. \nZna čaj farmaceuta u ublažavanju posledica interakcija  \nObzirom na sve složeniju farmakoterapiju pacijenata , raste i potencijal od ispoljavanja \nneželjenih ishoda klini čki zna čajnih interakcija. Pažnju treba usmeriti na starije  pacijente \nkoji primenjuju lekove sa uskom terapijskom širinom, poput digoksina, varfarina, teofilina, \nlitijuma i dr, jer je kod takvih pacijenata rizik o d pojave neželjenog ishoda, usled \ninterakcije, povišen. Za procenu potencijalnih interakcija važno je posedovati informacije o \ncelokupnoj trenutnoj terapiji pacijenta i terapiji koja je u skorije vreme primenjivana. \nPosebnu pažnju posvetiti potencijalnim interakcijam a lekova koji se izdaju na recept sa \nlekovima koji se izdaju bez lekarskog recepta, biljnim lekovima, hranom i dr.  \nMnoge interakcije se mogu izbe ći, ili intervencijom ublažiti, ukoliko farmaceut to me \nposveti pažnju i neophodno vreme.  \nIako se neželjeni ishod interakcija pouzdano može i zbe ći jedino u slu čaju obustave \nistovremene primene lekova koji stupaju u interakci ju, to nije uvek mogu će ili neophodno. \nU pojedinim slu čajevima dovoljno je korigovati dozu jednog leka u t oku trajanja \ninterakcije. U drugim slu čajevima potrebna je zamena leka u terapiji. O inter akcijama treba \nvoditi ra čuna prilikom svake izmene u terapiji, bez obzira da  li se radi o zapo činjanju \nterapije novim lekom, promeni doze, terapijskoj sup stituciji, promeni na čina primene ili \nobustavljanju primene leka.  \nKlini čko pra ćenje interakcija mora sadržavati prospektivne kontr ole pacijenta, koje se vrše \nu odgovaraju ćim vremenskim razmacima, kako bi se omogu ćila blagovremena reakcija \nzdravstvenog tima, u cilju izbegavanja neželjenih i shoda interakcija. Pacijente koji imaju\n\n20 \npovišen rizik od ispoljavanja interakcija i one koji primenjuju lekove sa uskom terapijskom \nširinom, potrebno je pratiti češ će (ponekad i nedeljno) a posebno kada se uvode novi  lekovi \nu terapiju ili obustavljaju postoje ći. Iako zavisi od samih lekova, uopšteno se može re ći da \nse potencijalno klini čko ispoljavanje interakcije lekova može o čekivati nakon nekoliko \ndana. Ukoliko se posumnja na interakciju nakon duže g vremena konstantne \nfarmakoterapije, treba razmotriti eventualne izmene u na činu ishrane.",
+          "metadata": {
+            "page_number": 17,
+            "cloud_chunk_index": 10,
+            "page_index": 0,
+            "source_document_id": "source_909a77a4490d699e3033",
+            "content_type": "parent_section",
+            "section_id": "section_df0fa702631014a1adff",
+            "page_numbers": [
+              17,
+              18,
+              19,
+              20
+            ],
+            "document_bytes": 9491,
+            "parent_id": "section_df0fa702631014a1adff",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Interakcije-lekova\\interakcije-lekova.pdf",
+            "total_pages": 20,
+            "folder": "Interakcije-lekova",
+            "document_type": "interaction_reference",
+            "section_index": 9,
+            "file_name": "interakcije-lekova.pdf",
+            "section_path": "Interakcije lekova sa hranom",
+            "file_type": ".pdf",
+            "section_title": "Interakcije lekova sa hranom",
+            "section_detection": "interaction_heading_rules",
+            "original_chunk_index": 9,
+            "record_type": "parent",
+            "cloud_subchunk_index": 0,
+            "page": 17,
+            "retrieved_child_id": "child_a6c5e2023cc6537bd640873c",
+            "retrieved_child_score": 0.012003129,
+            "retrieved_child_chunk_index": 1,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_df0fa702631014a1adff",
+          "child_text": "Document: interakcije-lekova.pdf\nSection: Interakcije lekova sa hranom\n\nprocesu\n\ntakmi če sa nutrijentima za resorpciju. Intestinalna mukoza je zna čajan metaboli čki organ za\n\nlekove poput ciklosporina, nifedipina i dr. čiji metabolizam zavisi od zdravstvenog statusa\n\ncreva. Obzirom na prirodu metabolizma u GIT-u, uopš teno se može re ći da zdravlje\n\nintestinalne mukoze najviše uti če na lekove koji se metabolišu izoenzimom CYP3A4 i\n\nzavise od P-gp.\n\nVoće i povr će može uticati na metabolizam lekova indukcijom ili  inhibicijom izoenzima\n\nCYP450.\n\n• Krajem devedesetih godina XX veka je slu čajno otkrivena interakcija soka od\n\ngrejpfruta i felodipina. Utvr đeno je da je sok od grejpfruta inhibitor izoenzima\n\nCYP3A4 i CYP1A2 i da može uzrokovati smanjenje klir ensa mnogih lekova poput\n\nciklosporina, estrogena, benzodiazepina, simvastati na, sakinavira, buspirona i dr.\n\n18\n\nTako đe, pretpostavlja se da redovna primena soka od grej pfruta smanjuje ekspresiju\n\nCYP3A4 u gastrointestinalnom traktu i doprinosi interakcijama."
+        }
+      ],
+      "prompt_context_characters": 13400,
+      "context_document_headers": 2,
+      "child_body_fully_in_prompt": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": "xanax_driving",
+      "question": "Smem li da vozim dok uzimam Xanax?",
+      "seconds": 5.631611099999645,
+      "metrics_by_k": {
+        "1": {
+          "id": "xanax_driving",
+          "question": "Smem li da vozim dok uzimam Xanax?",
+          "k": 1,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 1,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=2. Sta treba da znate pre nego sto uzmete lek"
+              ],
+              "score": 0.016090794,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "3": {
+          "id": "xanax_driving",
+          "question": "Smem li da vozim dok uzimam Xanax?",
+          "k": 3,
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 2,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=2. Sta treba da znate pre nego sto uzmete lek"
+              ],
+              "score": 0.016090794,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.01576923,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        },
+        "5": {
+          "id": "xanax_driving",
+          "question": "Smem li da vozim dok uzimam Xanax?",
+          "k": 5,
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 2,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=2. Sta treba da znate pre nego sto uzmete lek"
+              ],
+              "score": 0.016090794,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "hybrid_rrf_child_parent"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.01576923,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "hybrid_rrf_child_parent"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_a7b42153ffd59551ddb83d2b",
+          "score": 0.016090794,
+          "chroma_score": -0.016090794,
+          "distance": null,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\n2. Šta treba da znate pre nego što uzmete lek Xanax\nLek Xanax ne smete uzimati:\n- ukoliko ste alergični (preosetljivi) na alprazolam, druge benzodiazepine ili na bilo koju od pomoćnih\nsupstanci ovog leka (navedene u odeljku 6);\n- ukoliko imate miasteniju gravis, bolest koju karakteriše izrazita slabost mišića;\n- ukoliko imate teških problema sa disanjem (teška respiratorna insuficijencija);\n- ukoliko imate teško oboljenje jetre (insuficijencija jetre);\n- ukoliko imate teškoća sa disanjem dokom spavanja (apnea u snu);\nUpozorenja i mere opreza\nRazgovarajte sa svojim lekarom ili farmaceutom pre nego što uzmete lek Xanax. \nTrajanje lečenja treba da bude što je moguće kraće i ne treba da traje duže od 2 do 4 nedelje. Dalje \nproduženje lečenja izvan ovih okvira dozvoljeno je isključivo nakon ponovne procene kliničkog stanja.\nOvaj lek može dovesti do smanjenja ili čak gubitka svesti, značajnog smanjenja sposobnosti spontanog\ndisanja, ili do kome i smrti, ukoliko se uzima istovremeno sa drugim lekovima koji deluju na moždane i\nmentalne funkcije (npr. opioidi, antipsihotici ili hipnotici-sedativi) (videti deo „Drugi lekovi i lek Xanax”).\nBudite oprezni kada uzimate lek Xanax ukoliko:\n- ste stariji i/ili iscrpljeni. Lekar će Vam propisati smanjenu dozu ovog leka. Imajte na umu da ovaj lek \ntreba koristiti sa oprezom zbog rizika od sedacije i/ili slabosti u mišićima i kostima koji mogu izazvati \npadove, često sa ozbiljnim posledicama;\n- imate hronično oboljenje disajnih organa (hronična respiratorna insuficijencija), jer primena ovog leka \nmože pogoršati Vaše stanje; lekar Vam može propisati smanjenu dozu;\n- imate oboljenje bubrega (bubrežna insuficijencija) ili blago do umereno oboljenje jetre (blaga do \numerena insuficijencija jetre); \n- bolujete od teške depresije. Lek Xanax, kao i drugi benzodiazepini, ne sme da se koristi kao jedini lek za \nlečenje depresije jer može pogoršati sklonost ka samoubistvu ili izazvati promene raspoloženja;\n- bolujete od psihoze, ozbiljne mentalne bolesti koja izaziva promene ponašanja i otežano uspostavljanje \nodnosa sa drugim ljudima. Lek Xanax se ne preporučuje u kao prva linija terapije ovih stanja;\n- imate, ili ste u prošlosti imali problema sa zloupotrebom ili zavisnošću od alkohola, droge ili lekova, jer \nto može povećati rizik od zavisnosti na lek Xanax (videti deo „Razvoj zavisnosti”);\nOštećenje memorije\nNekoliko sati nakon uzimanja leka Xanax, može doći do otežanog pamćenja događaja koji su se desili nakon\nuzimanja leka. Da bi se ovaj rizik smanjio pacijent treba da bude siguran da će imati 7-8 sati neprekidnog \nsna.\nPsihijatrijski i paradoksalni poremećaji\nLek Xanax može izazvati nemir, agitiranost, razdražljivost, agresivnost, sumanute misli, bes, noćne more, \nhalucinacije, psihoze i reakcije suprotne od očekivanih (paradoksalni efekti) (videti deo 4 „Moguća\nneželjena dejstva”). Ovi efekti se češće javljaju kod dece i kod starijih.\n\n3 od 9\nUkoliko primetite ove efekte, obratite se V ašem lekaru jer se u  t om slučaju terapija lekom Xanax mora \nprekinuti.\nRazvoj tolerancije\nNakon nekoliko nedelja terapije može doći do smanjenja dejstva leka Xanax.\nRazvoj zavisnosti\nLek Xanax izaziva zavisnost (tj. možete primetiti pojačanu želju za uzimanjem leka, ili fizičke simptome \nkoji će se smanjiti ili povući samo nakon uzimanja leka). Verovatnoća da se razvije zavisnost se povećava sa \npovećanjem doze i dužim trajanjem terapije. Zbog toga će Vam lekar propisati najpodesniju terapiju u skladu \nsa Vašim poremećajima i stanjima koristeči najmanju moguću efektivnu dozu koju treba uzimati tokom \nnajkraćeg mogućeg perioda. Lekar će Vas takođe posavetovati kada da imate preglede radi procene napretka \nu Vašem zdravlju u vezi sa terapijom lekom Xanax.\nKada se fizička zavisnost jednom razvije, naglo obustavljanje terapije biće praćeno simptomima obustave \nleka.\nObustavljanje terapije\nKao i kod drugih lekova iz grupe benzodiazepina, naglo obustavljanje lečenja može da dovede do pojave \nsimptoma obustave leka. Oni mogu da obuhvataju blagu disforiju i nesanicu, sa mogućim grčevima u \nmišićima i abdomenu, povraćanjem, znojenjem, tremorom i konvulzijama. \nOvi simptomi, a posebno oni najteži, uglavnom se č ešće javljaju kod pacijenata koji su uzimali izuzetno \nvelike doze u dugom vremenskom periodu. Ipak, ovi simptomi se m ogu javiti i prilikom naglog \nobustavljanja primene terapijskih doza benzodiazepina. Zbog toga treba izbegavati nagle prekide lečenja i \nVaš lekar će Vam propisati postepeno smanjivanje doze. \nPovratni efekat \nPrilikom prekida lečenja mogu da se razviju simptomi zbog kojih je uvedena terapija benzodiazepinima, u \npojačanom obliku. Ova pojava može da bude praćena drugim reakcijama uključujući promene raspoloženja, \nanksioznost, nemir ili poremećaj spavanja. Zbog ove pojave se preporučuje da se doza smanjuje postepeno.\nZloupotreba leka Xanax\nOvaj lek treba da uzimate samo ako Vam je propisan od strane lekara i da ga preuzimate isključivo u apoteci. \nNemojte uzimati lek Xanax ako Vam ga lekar nije propisao. \nDeca i adolescenti\nBezbednost i efikasnost primene leka Xanax kod dece i adolescenata mlađih od 18 godina nije utvrđena te se \nprimena alprazolama ne preporučuje kod ove populacije.\nDrugi lekovi i lek Xanax\nObavestite Vašeg lekara ili farmaceuta ukoliko uzimate, donedavno ste uzimali ili ćete možda uzimati bilo\nkoje druge lekove.\nIstovremena primena leka Xanax sa opioidima (jaki lekovi protiv bolova, lekovi za supstitucionu terapiju i \npojedini lekovi protiv kašlja) povećava rizik od pojave pospanosti, otežanog disanja (respiratorna depresija), \nkome, i može biti opasna po život. Zbog toga, istovremenu primenu treba razmotriti samo kada ne postoje\ndruge terapijske opcije.\nMeđutim, ukoliko Vam lekar propiše lek Xanax istovremeno sa opioidima, treba da ograniči dozu i trajanje\nistovremene primene ovih lekova.\nObavestite lekara o svim lekovima iz grupe opioida koje uzimate i  pridržavajte se p reporuka lekara o \ndoziranju. Preporučuje se d a informišete prijatelje ili rodbinu o znacima i simptomima navedenim iznad. \nJavite se lekaru ukoliko Vam se jave ovi simptomi.\nPotreban je poseban oprez kada se lek Xanax uzima istovremeno sa sledećim lekovima:\n lekovi koji deluju na moždane ili mentalne* funkcije, kao što su:\n antipsihotici, lekovi za lečenje određenih mentalnih poremećaja;\n\n4 od 9\n hipnotici, lekovi koji pomažu da zaspite;\n sedativi, lekovi koji se koriste za smirenje;\n anksiolitici, lekovi koji se koriste za lečenje uznemirenosti;\n antidepresivi (kao što su nefazodon, fluvoksamin, fluoksetin, imipramin i dezipramin), lekovi \nkoji se koriste za lečenje depresije;\n narkotički analgetici, opioidi, lekovi koji se koriste za lečenje bolova jakog intenziteta;\n antiepileptici, lekovi koji se koriste za lečenje epileptičnih napada;\n anestetici. Kada se primenjuju istovremeno sa lekom Xanax, anestetici mogu da izazovu \neuforiju, sa povećanom verovatnoćom da se razvije zavisnost od leka Xanax;\n sedativni antihistaminici, lekovi koji se koriste za lečenje simptoma alergije;\n*Ukoliko se lek Xanax uzima istovremeno sa jednim ili više navedenih lekova ili alkoholnim pićima, \nmože doći do dodatnog slabljenja moždanih i mentalnih funkcija sve do smanjenja sposobnosti \nspontanog disanja, kome i smrti (videti deo „Upozorenja i mere opreza”);\n cimetidin, lek za lečenje gorušice;\n propoksifen, lek za ublažavanje bolova;\n oralni kontraceptivi (lekovi za zaštitu od trudnoće);\n diltiazem, lek koji se koristi za snižavanje krvnog pritiska;\n digoksin (lek koji se koristi za lečenje srčane slabosti). Uzimanje leka Xanax kod starijih povećava \nverovatnoću od pojave toksičnih efekata digoksina.\nSledeći lekovi mogu povećati dejstvo leka Xanax:\n ketokonazol, itrakonazol, posakonazol i vorikonazol, lekovi za lečenje gljivičnih infekcija;\n eritromicin, klaritromicin, telitromicin i troleandomicin (antibiotici);\n inhibitori proteaze (npr. ritonavir), lekovi za lečenje infekcije HIV virusom. Ako se lečite inhibitorima \nproteaze, lekar može takođe preporučiti obustavljanje terapije lekom Xanax zbog interakcije sa ovim \nlekovima.\nUzimanje leka Xanax sa alkoholom\nIzbegavajte uzimanje alkohola dok ste na terapiji lekom Xanax, jer alkohol pojačava dejstva ovog leka.\nTrudnoća i dojenje\nUkoliko ste trudni ili dojite, mislite da ste trudni ili planirate trudnoću, obratite se Vašem lekaru ili\nfarmaceutu za savet pre nego što uzmete ovaj lek.\nTrudnoća\nIskustva primene kod ljudi ukazuju da ovaj lek može biti štetan za fetus ukoliko se koristi tokom prvog \ntrimestra trudnoće (povećan rizik od pojave anomalija kao što je rascep nepca). \nLečenje velikim dozama b enzodiazepina tokom drugog i/ili trećeg trimestra trudnoće bilo je povezano sa \nsmanjenjem aktivnih pokreta fetusa (ploda) i promenama u srčanom ritmu fetusa. \nUzimanje ovog leka tokom trećeg trimestra trudnoće ili tokom porođaja može izazvati sledeće simptome\nkod novorođenčeta:\n− slab tonus mišića, mlitavost (aksijalna hipotonija);\n− otežano disanje (respiratorna slabost ili apnea) i otežano hranjenje;\n− sniženu telesnu temperaturu (hipotermija);\n− simptome obustave (videti odeljak 3 „Ako naglo prestanete da uzimate lek Xanax”)\nOvi efekti su prolazni i mogu trajati od nekoliko dana do 1-3 nedelje nakon rođenja bebe.\nLek Xanax ne treba koristiti tokom trudnoće, izuzev kada kliničko stanje žene zahteva lečenje. Lekar će \nproceniti da li možete uzimati ovaj lek tokom trudnoće i u tom slučaju će pratiti novorođenče.\nDojenje\nLek prolazi u majčino mleko i ne preporučuje se primena leka Xanax tokom dojenja.\nUpravljanje vozilima i rukovanje mašinama\n\n5 od 9\nLek Xanax može da izazove pospanost, zaboravnost, smanjenje koncentracije i mišićnu slabost, pa je veoma \nvažno da ne upravljate vozilima i da ne rukujete mašinama tokom terapije ovim lekom. Ovi efekti mogu biti \nizraženiji ukoliko niste dovoljno spavali ili ukoliko ste konzumirali alkohol.\nLek Xanax sadrži laktozu monohidrat\nLek Xanax sadrži laktozu, monohidrat, vrstu šećera. U slučaju intolerancije na pojedine šećere, obratite se \nVašem lekaru pre upotrebe ovog leka.\nLek Xanax sadrži natrijum-benzoat\nLek Xanax sadrži 0,11 mg natrijum benzoata po tableti.\nLek Xanax sadrži natrijum\nOvaj lek sadrži manje od 1 mmol (23 mg) natrijiuma po tableti, odnosno suštinski je „bez natrijuma“.\nLek Xanax, 0,5 mg, tablete sadrži boju sunset yellow\nLek Xanax, 0,5 mg, tablete sadrži boju sunset yellow koja može da izazove alergijske reakcije.",
+          "metadata": {
+            "page": 2,
+            "file_name": "xanax.pdf",
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "file_type": ".pdf",
+            "cloud_chunk_index": 21,
+            "medicine_name": "Xanax",
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "page_index": 0,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "section_id": "section_522790df8bc59217d2f3",
+            "active_substance": "alprazolam",
+            "document_bytes": 10859,
+            "page_number": 2,
+            "original_chunk_index": 20,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "folder": "alprazolam",
+            "total_pages": 9,
+            "parent_id": "section_522790df8bc59217d2f3",
+            "cloud_subchunk_index": 0,
+            "document_type": "medicine_leaflet",
+            "section_index": 2,
+            "content_type": "parent_section",
+            "section_detection": "medicine_leaflet_headings",
+            "record_type": "parent",
+            "retrieved_child_id": "child_a7b42153ffd59551ddb83d2b",
+            "retrieved_child_score": 0.016090794,
+            "retrieved_child_chunk_index": 9,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_522790df8bc59217d2f3",
+          "child_text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nlekom Xanax, anestetici mogu da izazovu\n\neuforiju, sa povećanom verovatnoćom da se razvije zavisnost od leka Xanax;\n\n sedativni antihistaminici, lekovi koji se koriste za lečenje simptoma alergije;\n\n*Ukoliko se lek Xanax uzima istovremeno sa jednim ili više navedenih lekova ili alkoholnim pićima,\n\nmože doći do dodatnog slabljenja moždanih i mentalnih funkcija sve do smanjenja sposobnosti\n\nspontanog disanja, kome i smrti (videti deo „Upozorenja i mere opreza”);\n\n cimetidin, lek za lečenje gorušice;\n\n propoksifen, lek za ublažavanje bolova;\n\n oralni kontraceptivi (lekovi za zaštitu od trudnoće);\n\n diltiazem, lek koji se koristi za snižavanje krvnog pritiska;\n\n digoksin (lek koji se koristi za lečenje srčane slabosti). Uzimanje leka Xanax kod starijih povećava\n\nverovatnoću od pojave toksičnih efekata digoksina.\n\nSledeći lekovi mogu povećati dejstvo leka Xanax:\n\n ketokonazol, itrakonazol, posakonazol i vorikonazol, lekovi za lečenje gljivičnih infekcija;"
+        },
+        {
+          "id": "child_5920b42a8cf3f0623fc06c43",
+          "score": 0.01576923,
+          "chroma_score": -0.01576923,
+          "distance": null,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 3. Kako se uzima lek\n\n3. Kako se uzima lek Xanax\nUvek uzimajte ovaj lek tačno onako kako Vam je to objasnio Vaš lekar ili farmaceut. Ukoliko niste sigurni \nproverite sa Vašim lekarom ili farmaceutom.\n Lečenje anksioznosti\nPreporučena početna doza je 0,25 mg do 0,5 mg, tri puta dnevno.\nDoza se može postepeno povećati do maksimalne dnevne doze od 4 mg, koja se uzima podeljena u više \ndoza. Prvo se povećava večernja doza, a zatim doza koja se uzima u toku dana.\nPrimena kod starijih pacijenata, pacijenata sa poremećajem funkcije jetre i bubrega i/ili iscrpljenih \npacijenata\nPreporučena početna doza je 0,25 mg, 2 do 3 puta dnevno. \nTrajanje terapije lekom Xanax treba da bude što je moguće kraće.\nPreporuka je da terapija traje najduže 2 do 4 nedelje. Ne preporučuje se dugotrajna terapija. Vaš lekar će \nodlučiti da li treba da nastavite terapiju nakon maksimalno preporučenog perioda.\nAko ste uzeli više leka Xanax nego što treba\nUkoliko ste uzeli previše leka Xanax, odmah se javite lekaru ili idite do najbliže službe hitne pomoći.\n− U blagim slučajevima, simptomi predoziranja mogu biti: mentalna konfuzija, pospanost i otežan \ngovor.\n− U težim slučajevima, simptomi predoziranja mogu biti: gubitak koordinacije pokreta, slab tonus \nmišića, nizak krvni pritisak, teškoće u disanju, koma i smrt.\nAko ste zaboravili da uzmete lek Xanax\nAko ste zaboravili da uzmete propisanu dozu leka, odmah uzmite propuštenu dozu, osim ako nije blizu\nvreme za sledeću dozu. Ne uzimajte duplu dozu da biste nadoknadili propuštenu dozu.\nAko naglo prestanete da uzimate lek Xanax\nNemojte naglo prestajati da uzimate lek Xanax. Uvek se konsultujte sa Vašim lekarom pre nego što\nprestanete da uzimate lek Xanax. Prilikom prekida terapije neophodno je postepeno smanjivati dozu leka da \nbi se izbegli:\n apstinencijalni simptomi kao što su:\n- teški simptomi: osećaj odvajanja od sebe ili ostatka sveta, utrnulost ili peckanje u rukama ili nogama, \npojačana osetljivost na svetlost, zvuke i fizički kontakt, halucinacije, epileptični napadi, grčevi u \nmišićima i stomaku, povraćanje, znojenje, podrhtavanje, tremor ili konvulzije;\n\n6 od 9\n- drugi simptomi: glavobolja, bol u mišićima, uznemirenost, napetost, nemir, konfuzija, razdražljivost, \nstanje blage depresije, nesanica;\n povratni efekat sa simptomima kao što su anksioznost. Ovi simptomi su isti kao i oni zbog kojih Vam\nje propisan lek Xanax, a mogu se privremeno ponovo javiti sa pojačanim intenzitetom pri naglom\nprekidu terapije.\nAko imate dodatnih pitanja o primeni ovog leka, obratite se Vašem lekaru ili farmaceutu.",
+          "metadata": {
+            "parent_id": "section_09fed273adeb1ce0f47d",
+            "file_name": "xanax.pdf",
+            "section_index": 3,
+            "cloud_subchunk_index": 0,
+            "cloud_chunk_index": 22,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "page_number": 5,
+            "section_id": "section_09fed273adeb1ce0f47d",
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "file_type": ".pdf",
+            "document_bytes": 2704,
+            "original_chunk_index": 21,
+            "record_type": "parent",
+            "medicine_name": "Xanax",
+            "section_detection": "medicine_leaflet_headings",
+            "page": 5,
+            "folder": "alprazolam",
+            "content_type": "parent_section",
+            "total_pages": 9,
+            "section_title": "3. Kako se uzima lek",
+            "active_substance": "alprazolam",
+            "page_numbers": [
+              5,
+              6
+            ],
+            "section_path": "3. Kako se uzima lek",
+            "document_type": "medicine_leaflet",
+            "page_index": 0,
+            "retrieved_child_id": "child_5920b42a8cf3f0623fc06c43",
+            "retrieved_child_score": 0.01576923,
+            "retrieved_child_chunk_index": 2,
+            "retrieval_record_type": "child"
+          },
+          "search_type": "hybrid_rrf_child_parent",
+          "parent_id": "section_09fed273adeb1ce0f47d",
+          "child_text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 3. Kako se uzima lek\n\nuzimajte duplu dozu da biste nadoknadili propuštenu dozu.\n\nAko naglo prestanete da uzimate lek Xanax\n\nNemojte naglo prestajati da uzimate lek Xanax. Uvek se konsultujte sa Vašim lekarom pre nego što\n\nprestanete da uzimate lek Xanax. Prilikom prekida terapije neophodno je postepeno smanjivati dozu leka da\n\nbi se izbegli:\n\n apstinencijalni simptomi kao što su:\n\n- teški simptomi: osećaj odvajanja od sebe ili ostatka sveta, utrnulost ili peckanje u rukama ili nogama,\n\npojačana osetljivost na svetlost, zvuke i fizički kontakt, halucinacije, epileptični napadi, grčevi u\n\nmišićima i stomaku, povraćanje, znojenje, podrhtavanje, tremor ili konvulzije;"
+        }
+      ],
+      "prompt_context_characters": 13635,
+      "context_document_headers": 2,
+      "child_body_fully_in_prompt": [
+        true,
+        true
+      ]
+    }
+  ]
+}

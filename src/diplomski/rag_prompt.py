@@ -55,13 +55,25 @@ def format_context(
         if not text:
             continue
 
-        block = (
-            f"[Dokument {index}]\n"
-            f"score: {document.score:.4f}\n"
-            f"source: {source_label}\n"
-            f"content_type: {document.metadata.get('content_type')}\n"
-            f"tekst:\n{text}"
+        header_lines = [
+            f"[Dokument {index}]",
+            f"score: {document.score:.4f}",
+            f"source: {source_label}",
+        ]
+        if document.metadata.get("medicine_name"):
+            header_lines.append(f"lek: {document.metadata.get('medicine_name')}")
+        if document.metadata.get("active_substance"):
+            header_lines.append(
+                f"aktivna_supstanca: {document.metadata.get('active_substance')}"
+            )
+        header_lines.extend(
+            [
+                f"section: {document.metadata.get('section_title')}",
+                f"content_type: {document.metadata.get('content_type')}",
+                f"tekst:\n{text}",
+            ]
         )
+        block = "\n".join(header_lines)
 
         remaining_chars = max_context_chars - used_chars
         if remaining_chars <= 0:
@@ -101,7 +113,10 @@ def extract_sources(documents: list[RetrievedDocument]) -> list[dict[str, Any]]:
             {
                 "source": source,
                 "file_name": file_name,
+                "medicine_name": metadata.get("medicine_name"),
+                "active_substance": metadata.get("active_substance"),
                 "page": page,
+                "section": metadata.get("section_title"),
                 "content_type": metadata.get("content_type"),
                 "score": document.score,
             }
@@ -116,10 +131,17 @@ def format_source_label(metadata: dict[str, Any]) -> str:
     file_name = _metadata_display_value(metadata, "file_name", "file_names")
     source = _metadata_display_value(metadata, "source", "sources")
     page = _metadata_display_value(metadata, "page_number", "page_numbers")
+    section = metadata.get("section_title")
+    medicine_name = metadata.get("medicine_name")
+    active_substance = metadata.get("active_substance")
 
-    label = file_name or source or "unknown source"
+    label = medicine_name or file_name or source or "unknown source"
+    if active_substance:
+        label = f"{label} ({active_substance})"
     if page is not None:
         label = f"{label}, page {page}"
+    if section:
+        label = f"{label}, section {section}"
 
     return str(label)
 
