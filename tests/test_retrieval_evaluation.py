@@ -1,14 +1,46 @@
 import unittest
+from unittest.mock import Mock, patch
 
 from diplomski.evaluate_retrieval import (
     evaluate_case_at_k,
+    parse_args,
     result_matches_expected_chunk,
+    run_live_evaluation,
     value_contains,
     value_matches,
 )
 
 
 class RetrievalEvaluationTests(unittest.TestCase):
+    def test_cli_defaults_to_child_results_and_allows_parent_comparison(self) -> None:
+        for arguments, expected in (
+            ([], False),
+            (["--child-only"], False),
+            (["--expand-to-parent"], True),
+        ):
+            with self.subTest(arguments=arguments):
+                with patch("sys.argv", ["evaluate_retrieval.py", *arguments]):
+                    self.assertEqual(parse_args().expand_to_parent, expected)
+
+    def test_live_evaluation_passes_and_records_context_mode(self) -> None:
+        store = Mock()
+        store.search.return_value = []
+        cases = [{
+            "id": "sample", "question": "query",
+            "expected_chunks": [{"file_name": "sample.pdf"}],
+        }]
+
+        for expand in (False, True):
+            with self.subTest(expand_to_parent=expand):
+                report = run_live_evaluation(
+                    eval_cases=cases, k_values=[1], store=store,
+                    candidate_pool_size=60, use_hybrid_search=True,
+                    group_by_source=True, expand_to_parent=expand,
+                )
+
+                self.assertEqual(store.search.call_args.kwargs["expand_to_parent"], expand)
+                self.assertEqual(report["expand_to_parent"], expand)
+
     def test_result_matches_expected_chunk_by_metadata(self) -> None:
         result = {
             "text": "Lek: Norvasc\nAktivna supstanca: amlodipin",

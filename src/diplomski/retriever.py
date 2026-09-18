@@ -26,7 +26,7 @@ class RetrievedDocument:
 
 
 class ChromaRetriever:
-    """Retrieve top-k documents from Chroma Cloud."""
+    """Retrieve top-k child chunks from Chroma Cloud without parent expansion."""
 
     def __init__(
         self,
@@ -56,7 +56,7 @@ class ChromaRetriever:
         )
 
     def retrieve(self, query: str, k: int = DEFAULT_TOP_K) -> list[RetrievedDocument]:
-        """Return the k most relevant documents for a query."""
+        """Return up to k child chunks, keeping their text, metadata and scores."""
 
         results = self.vector_store.query(
             query,
@@ -64,6 +64,7 @@ class ChromaRetriever:
             candidate_count=self.candidate_pool_size,
             use_hybrid_search=self.use_hybrid_search,
             group_by_source=self.group_by_source,
+            expand_to_parent=False,
         )
 
         return [

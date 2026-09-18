@@ -21,6 +21,12 @@ class RetrieverTests(unittest.TestCase):
         self.assertEqual(store.calls[0]["query"], "nezeljena dejstva")
         self.assertEqual(store.calls[0]["top_k"], 3)
         self.assertEqual(store.calls[0]["candidate_count"], 12)
+        self.assertFalse(store.calls[0]["expand_to_parent"])
+        self.assertEqual(documents[0].metadata["record_type"], "child")
+        self.assertEqual(documents[0].metadata["parent_id"], "parent_1")
+        self.assertEqual(documents[0].document_id, "result_1")
+        self.assertEqual(documents[0].score, 0.8)
+        self.assertEqual(documents[0].search_type, "dense_child")
 
 
 class RAGPipelineTests(unittest.TestCase):
@@ -36,10 +42,12 @@ class RAGPipelineTests(unittest.TestCase):
                         "active_substance": "amlodipin",
                         "page_number": 4,
                         "section_title": "4. Moguca nezeljena dejstva",
-                        "content_type": "parent_section",
+                        "content_type": "text",
+                        "record_type": "child",
+                        "parent_id": "parent_1",
                     },
                     score=0.91,
-                    document_id="parent_1",
+                    document_id="child_1",
                 )
             ]
         )
@@ -55,6 +63,21 @@ class RAGPipelineTests(unittest.TestCase):
         self.assertEqual(response.sources[0]["medicine_name"], "Norvasc")
         self.assertEqual(response.sources[0]["active_substance"], "amlodipin")
         self.assertEqual(response.sources[0]["section"], "4. Moguca nezeljena dejstva")
+
+    def test_rag_sends_child_text_without_parent_expansion(self) -> None:
+        store = FakeVectorStore()
+        retriever = ChromaRetriever(vector_store=store)
+        llm = FakeLLM()
+        pipeline = RAGPipeline(retriever=retriever, llm=llm)
+
+        response = pipeline.answer("Pitanje o leku?")
+
+        self.assertFalse(store.calls[0]["expand_to_parent"])
+        self.assertIn("retrieved text", llm.prompts[0])
+        self.assertNotIn("Full parent section", llm.prompts[0])
+        self.assertEqual(response.prompt, llm.prompts[0])
+        self.assertEqual(response.retrieved_documents[0].text, "retrieved text")
+        self.assertEqual(response.retrieved_documents[0].metadata["record_type"], "child")
 
     def test_rag_pipeline_does_not_call_llm_without_context(self) -> None:
         retriever = FakeRetriever([])
@@ -78,6 +101,7 @@ class FakeVectorStore:
         candidate_count,
         use_hybrid_search,
         group_by_source,
+        expand_to_parent=True,
     ):
         self.calls.append(
             {
@@ -86,17 +110,22 @@ class FakeVectorStore:
                 "candidate_count": candidate_count,
                 "use_hybrid_search": use_hybrid_search,
                 "group_by_source": group_by_source,
+                "expand_to_parent": expand_to_parent,
             }
         )
         return [
             {
                 "id": "result_1",
-                "text": "retrieved text",
-                "metadata": {"source": "sample.pdf"},
+                "text": "Full parent section" if expand_to_parent else "retrieved text",
+                "metadata": {
+                    "source": "sample.pdf",
+                    "record_type": "parent" if expand_to_parent else "child",
+                    "parent_id": "parent_1",
+                },
                 "score": 0.8,
                 "chroma_score": 0.2,
                 "distance": None,
-                "search_type": "dense_child_parent",
+                "search_type": "dense_child_parent" if expand_to_parent else "dense_child",
             }
         ]
 

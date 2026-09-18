@@ -324,6 +324,7 @@ def run_live_evaluation(
     }
 
     return {
+        "expand_to_parent": expand_to_parent,
         "summary": summary,
         "cases": evaluated_cases,
     }
@@ -403,11 +404,20 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--no-hybrid-search", action="store_true")
     parser.add_argument("--no-group-by-source", action="store_true")
-    parser.add_argument(
+    context_mode = parser.add_mutually_exclusive_group()
+    context_mode.add_argument(
         "--child-only",
-        action="store_true",
-        help="Evaluate raw retrieved child chunks instead of expanded parent sections.",
+        dest="expand_to_parent",
+        action="store_false",
+        help="Evaluate raw retrieved child chunks (default, same as RAG).",
     )
+    context_mode.add_argument(
+        "--expand-to-parent",
+        dest="expand_to_parent",
+        action="store_true",
+        help="Expand child hits to parent sections for comparison with older runs.",
+    )
+    parser.set_defaults(expand_to_parent=False)
     parser.add_argument("--show-results", action="store_true")
     parser.add_argument("--json-output", default=None)
     return parser.parse_args()
@@ -435,7 +445,7 @@ def main() -> None:
         candidate_pool_size=args.candidate_pool_size,
         use_hybrid_search=not args.no_hybrid_search,
         group_by_source=not args.no_group_by_source,
-        expand_to_parent=not args.child_only,
+        expand_to_parent=args.expand_to_parent,
     )
     print_evaluation_report(report, show_results=args.show_results)
 

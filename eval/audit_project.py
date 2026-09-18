@@ -203,6 +203,7 @@ def cloud_inventory(store: ReadOnlyStore, output: Path) -> None:
 def live_retrieval(
     store: ReadOnlyStore, cases: list[dict[str, Any]], output: Path,
     variants: list[tuple[str, bool, bool]] | None = None,
+    *, expand_to_parent: bool = False,
 ) -> None:
     if not (output / "cloud_inventory.json").exists():
         cloud_inventory(store, output)
@@ -214,7 +215,8 @@ def live_retrieval(
             print(f"[AUDIT] {name}: {case['id']}", flush=True)
             start = time.perf_counter()
             results = store.search(case["question"], top_k=5, candidate_count=60,
-                                   use_hybrid_search=hybrid, group_by_source=group)
+                                   use_hybrid_search=hybrid, group_by_source=group,
+                                   expand_to_parent=expand_to_parent)
             seconds = time.perf_counter() - start
             for result in results:
                 result["metadata"] = {k: v for k, v in result["metadata"].items()
@@ -234,7 +236,7 @@ def live_retrieval(
             report = {
                 "variant": name, "requested_hybrid": hybrid, "group_by_source": group,
                 "candidate_pool_size": 60, "group_by_document_limit": store.group_by_document_limit,
-                "expand_to_parent": True, "completed_cases": len(evaluated),
+                "expand_to_parent": expand_to_parent, "completed_cases": len(evaluated),
                 "summary": {str(k): aggregate_metrics([r["metrics_by_k"][str(k)] for r in evaluated])
                             for k in (1, 3, 5)},
                 "latency_seconds": distribution([r["seconds"] for r in evaluated]),

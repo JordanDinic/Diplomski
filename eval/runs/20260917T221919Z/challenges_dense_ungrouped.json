@@ -1,0 +1,1574 @@
+{
+  "variant": "challenges_dense_ungrouped",
+  "requested_hybrid": false,
+  "group_by_source": false,
+  "candidate_pool_size": 60,
+  "group_by_document_limit": 2,
+  "expand_to_parent": false,
+  "completed_cases": 4,
+  "summary": {
+    "1": {
+      "precision_at_k": 0.75,
+      "recall_at_k": 0.75,
+      "hit_at_k": 0.75,
+      "mrr_at_k": 0.75
+    },
+    "3": {
+      "precision_at_k": 0.5,
+      "recall_at_k": 0.75,
+      "hit_at_k": 0.75,
+      "mrr_at_k": 0.75
+    },
+    "5": {
+      "precision_at_k": 0.45,
+      "recall_at_k": 0.75,
+      "hit_at_k": 0.75,
+      "mrr_at_k": 0.75
+    }
+  },
+  "latency_seconds": {
+    "min": 1.8391110000084154,
+    "median": 2.304753749995143,
+    "mean": 2.3636537749989657,
+    "max": 3.005996599997161,
+    "p95_nearest_rank": 3.005996599997161
+  },
+  "cases": [
+    {
+      "id": "cyrillic_norvasc",
+      "question": "Која су нежељена дејства лека Норваск?",
+      "seconds": 2.2002159999974538,
+      "metrics_by_k": {
+        "1": {
+          "id": "cyrillic_norvasc",
+          "question": "Која су нежељена дејства лека Норваск?",
+          "k": 1,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 1,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.6866857399999999,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "3": {
+          "id": "cyrillic_norvasc",
+          "question": "Која су нежељена дејства лека Норваск?",
+          "k": 3,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 3,
+          "returned_results": 3,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.6866857399999999,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.68261003,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.68050253,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "5": {
+          "id": "cyrillic_norvasc",
+          "question": "Која су нежељена дејства лека Норваск?",
+          "k": 5,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 5,
+          "returned_results": 5,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.6866857399999999,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.68261003,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.68050253,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 4,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.67249954,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 5,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=4. Moguca nezeljena dejstva"
+              ],
+              "score": 0.67139685,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "4. Moguca nezeljena dejstva",
+              "search_type": "dense_child"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_efc7d3675f7951022a3819a8",
+          "score": 0.6866857399999999,
+          "chroma_score": 0.31331426,
+          "distance": 0.31331426,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 4. Moguca nezeljena dejstva\n\nuznemirenost, depresija, nesanica\n\n Drhtanje, promene čula ukusa, kratkotrajni gubitak svesti (sinkopa)\n\n Osećaj trnjenja i bockanja u rukama i nogama, gubitak osećaja za bol\n\n Zujanje u ušima\n\n Nizak krvni pritisak\n\n Kijanje/curenje iz nosa usled zapaljenja nosne sluznice (rinitis)\n\n Kašalj\n\n Suvoća usta, povraćanje\n\n Gubitak kose, pojačano znojenje, svrab, koprivnjača (crveni pečati na koži), promena boje kože,\n\negzantem\n\n Poremećaj mokrenja, učestala potreba za mokrenjem noću, češće mokrenje\n\n Nemogućnost da se uspostavi erekcija (impotencija), nelagodnost ili povećanje grudi kod muškaraca\n\n Bol, malaksalost,\n\n Bolovi u zglobovima ili mišićima, bol u leđima\n\n Povećanje ili smanjenje telesne mase\n\nRetka neželjena dejstva (mogu da se jave kod najviše 1 na 1000 pacijenata koji uzimaju lek):\n\n Zbunjenost\n\nVeoma retka neželjena dejstva (mogu da se jave kod najviše 1 na 10000 pacijenata koji uzimaju lek):",
+          "metadata": {
+            "file_type": ".pdf",
+            "section_path": "4. Moguca nezeljena dejstva",
+            "child_chunk_count": 7,
+            "folder": "amlodipin",
+            "active_substance": "amlodipin",
+            "file_name": "norvasc.pdf",
+            "medicine_name": "Norvasc",
+            "section_detection": "medicine_leaflet_headings",
+            "document_bytes": 1088,
+            "page": 4,
+            "section_index": 4,
+            "original_chunk_index": 3,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "record_type": "child",
+            "page_index": 0,
+            "content_type": "child_chunk",
+            "page_number": 4,
+            "page_numbers": [
+              4,
+              5
+            ],
+            "document_type": "medicine_leaflet",
+            "parent_section_index": 4,
+            "section_id": "section_04fa4bf92f4e1e87ba1f",
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "total_pages": 7,
+            "parent_id": "section_04fa4bf92f4e1e87ba1f",
+            "section_title": "4. Moguca nezeljena dejstva",
+            "cloud_subchunk_index": 0,
+            "child_chunk_index": 3,
+            "cloud_chunk_index": 643
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_990d16bb5c9f79827a6440d1",
+          "score": 0.68261003,
+          "chroma_score": 0.31738997,
+          "distance": 0.31738997,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 4. Moguca nezeljena dejstva\n\ndejstva (mogu da se jave kod najviše 1 na 1000 pacijenata koji uzimaju lek):\n\n Zbunjenost\n\nVeoma retka neželjena dejstva (mogu da se jave kod najviše 1 na 10000 pacijenata koji uzimaju lek):\n\n Smanjen broj belih krvnih zrnaca, smanjen broj krvnih pločica što može dovesti do stvaranja\n\nneuobičajenih modrica ili krvarenja\n\n Povećanje koncentracije šećera u krvi (hiperglikemija)\n\n Oštećenje nerava koje može dovesti do mišićne slabosti, osećaj trnjenja i bockanja\n\n Oticanje desni, krvarenje iz desni\n\n Zapaljenje želudačne sluzokože (gastritis), koje je praćeno nadimanjem u stomaku\n\n Poremećaj funkcije jetre, zapaljenje jetre (hepatitis), žuta prebojenost kože (žutica), porast vrednosti\n\nenzima jetre koji može imati uticaja na rezultate određenih laboratorijskih testova\n\n Pojačana mišićna napetost\n\n Zapaljenje krvnih sudova, obično praćeno osipom na koži\n\n Osetljivost na svetlost\n\n Poremećaji  koji uključuju ukočenost, drhtavicu i/ili poremećaje pokreta",
+          "metadata": {
+            "page_numbers": [
+              4,
+              5
+            ],
+            "section_path": "4. Moguca nezeljena dejstva",
+            "file_type": ".pdf",
+            "content_type": "child_chunk",
+            "child_chunk_index": 4,
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "medicine_name": "Norvasc",
+            "section_detection": "medicine_leaflet_headings",
+            "record_type": "child",
+            "parent_id": "section_04fa4bf92f4e1e87ba1f",
+            "document_type": "medicine_leaflet",
+            "cloud_chunk_index": 644,
+            "section_title": "4. Moguca nezeljena dejstva",
+            "parent_section_index": 4,
+            "file_name": "norvasc.pdf",
+            "total_pages": 7,
+            "active_substance": "amlodipin",
+            "document_bytes": 1133,
+            "section_id": "section_04fa4bf92f4e1e87ba1f",
+            "page": 4,
+            "child_chunk_count": 7,
+            "cloud_subchunk_index": 0,
+            "page_index": 0,
+            "page_number": 4,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "folder": "amlodipin",
+            "original_chunk_index": 4,
+            "section_index": 4
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_63774855f84111163629cf6c",
+          "score": 0.68050253,
+          "chroma_score": 0.31949747,
+          "distance": 0.31949747,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 4. Moguca nezeljena dejstva\n\nili druge alergijske reakcije\n\n srčani udar (infarkt miokarda), poremećaj srčanog ritma\n\n zapaljenje pankreasa koje može da dovede do jakog bola u stomaku i donjem delu leđa, praćeno\n\nosećajem opšte slabosti.\n\nZabeležena su sledeća veoma česta neželjena dejstva. Ukoliko se kod Vas pojavi bilo koje neželjeno dejstvo\n\nkoje dovodi do nelagode ili traje duže od nedelju dana, odmah se obratite Vašem lekaru.\n\nVeoma česta neželjena dejstva (mogu da se jave kod više od 1 na 10 pacijenata koji uzimaju lek):\n\n Edem (pojava otoka usled zadržavanja tečnosti)\n\nZabeležena su sledeća česta neželjena dejstva. Ukoliko se kod Vas pojavi bilo koje neželjeno dejstvo koje\n\ndovodi do nelagode ili traje duže od nedelju dana, odmah se obratite Vašem lekaru.\n\nČesta neželjena dejstva (mogu da se jave kod najviše 1 na 10 pacijenata koji uzimaju lek):\n\n Glavobolja, vrtoglavica, pospanost (posebno na početku terapije)\n\n Palpitacije (osećaj lupanja srca), naleti crvenila\n\n Bol u stomaku, mučnina",
+          "metadata": {
+            "active_substance": "amlodipin",
+            "section_path": "4. Moguca nezeljena dejstva",
+            "section_index": 4,
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "document_bytes": 1133,
+            "file_name": "norvasc.pdf",
+            "section_title": "4. Moguca nezeljena dejstva",
+            "child_chunk_index": 1,
+            "cloud_chunk_index": 641,
+            "parent_id": "section_04fa4bf92f4e1e87ba1f",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "file_type": ".pdf",
+            "section_detection": "medicine_leaflet_headings",
+            "total_pages": 7,
+            "parent_section_index": 4,
+            "cloud_subchunk_index": 0,
+            "document_type": "medicine_leaflet",
+            "page_numbers": [
+              4,
+              5
+            ],
+            "medicine_name": "Norvasc",
+            "page_number": 4,
+            "original_chunk_index": 1,
+            "folder": "amlodipin",
+            "child_chunk_count": 7,
+            "record_type": "child",
+            "page_index": 0,
+            "page": 4,
+            "section_id": "section_04fa4bf92f4e1e87ba1f",
+            "content_type": "child_chunk"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_36e12a0659f87330af589053",
+          "score": 0.67249954,
+          "chroma_score": 0.32750046,
+          "distance": 0.32750046,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 4. Moguca nezeljena dejstva\n\nkod najviše 1 na 10 pacijenata koji uzimaju lek):\n\n Glavobolja, vrtoglavica, pospanost (posebno na početku terapije)\n\n Palpitacije (osećaj lupanja srca), naleti crvenila\n\n Bol u stomaku, mučnina\n\n Promene ritma pražnjenja creva, proliv, otežano pražnjenje creva (konstipacija), poremećaj varenja\n\n Zamor, slabost\n\n Poremećaj vida, dvostruke slike\n\n Grčevi u mišićima\n\n Oticanje skočnog zgloba\n\nOstala neželjena dejstva koja su prijavljena uključena su u sledeću listu. Ukoliko neko neželjeno dejstvo\n\npostane ozbiljno ili ukoliko primetite neka od neželjenih dejstava koja nisu navedena u ovom uputstvu,\n\nodmah obavestite Vašeg lekara ili farmaceuta.\n\n5 od 7\n\nPovremena neželjena dejstva (mogu da se jave kod najviše 1 na 100 pacijenata koji uzimaju lek):\n\n Promene raspoloženja, uznemirenost, depresija, nesanica\n\n Drhtanje, promene čula ukusa, kratkotrajni gubitak svesti (sinkopa)\n\n Osećaj trnjenja i bockanja u rukama i nogama, gubitak osećaja za bol\n\n Zujanje u ušima",
+          "metadata": {
+            "page_number": 4,
+            "document_bytes": 1136,
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "cloud_subchunk_index": 0,
+            "cloud_chunk_index": 642,
+            "file_type": ".pdf",
+            "page_numbers": [
+              4,
+              5
+            ],
+            "document_type": "medicine_leaflet",
+            "child_chunk_index": 2,
+            "content_type": "child_chunk",
+            "section_detection": "medicine_leaflet_headings",
+            "parent_id": "section_04fa4bf92f4e1e87ba1f",
+            "page_index": 0,
+            "folder": "amlodipin",
+            "section_index": 4,
+            "total_pages": 7,
+            "section_path": "4. Moguca nezeljena dejstva",
+            "file_name": "norvasc.pdf",
+            "section_id": "section_04fa4bf92f4e1e87ba1f",
+            "section_title": "4. Moguca nezeljena dejstva",
+            "record_type": "child",
+            "page": 4,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "medicine_name": "Norvasc",
+            "original_chunk_index": 2,
+            "parent_section_index": 4,
+            "active_substance": "amlodipin",
+            "child_chunk_count": 7
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_96cc14f376bd93b33d02835f",
+          "score": 0.67139685,
+          "chroma_score": 0.32860315,
+          "distance": 0.32860315,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 4. Moguca nezeljena dejstva\n\n4. Moguća neželjena dejstva\n\nKao i svi lekovi, ovaj lek može da prouzrokuje neželjena dejstva, iako ona ne moraju da se jave kod svih\n\npacijenata koji uzimaju lek.\n\nMorate se odmah obratiti lekaru ukoliko posle uzimanja leka Norvasc osetite bilo koje od sledećih\n\nneželjenih dejstava koja mogu biti ozbiljna:\n\n iznenadno zviždanje u grudima, bol u grudima, nedostatak daha ili otežano disanje\n\n otok očnih kapaka, lica ili usana\n\n otok jezika i grla koji dovodi do ozbiljnih poteškoća u disanju\n\n teške kožne reakcije koje uključuju izražen osip na koži, koprivnjaču, crvenilo kože koje zahvata celo\n\ntelo, težak svrab, plikove, ljuštenje i oticanje kože, zapaljenje mukoznih membrana (kao što su\n\nStevens-Johnson-ov sindrom, eksfolijativni dermatitis, multiformni eritem, toksična epidermalna\n\nnekroliza) ili druge alergijske reakcije\n\n srčani udar (infarkt miokarda), poremećaj srčanog ritma\n\n zapaljenje pankreasa koje može da dovede do jakog bola u stomaku i donjem delu leđa, praćeno",
+          "metadata": {
+            "page_numbers": [
+              4,
+              5
+            ],
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "content_type": "child_chunk",
+            "section_detection": "medicine_leaflet_headings",
+            "cloud_chunk_index": 640,
+            "file_name": "norvasc.pdf",
+            "parent_id": "section_04fa4bf92f4e1e87ba1f",
+            "document_bytes": 1137,
+            "section_title": "4. Moguca nezeljena dejstva",
+            "child_chunk_index": 0,
+            "page": 4,
+            "parent_section_index": 4,
+            "original_chunk_index": 0,
+            "folder": "amlodipin",
+            "document_type": "medicine_leaflet",
+            "medicine_name": "Norvasc",
+            "file_type": ".pdf",
+            "section_id": "section_04fa4bf92f4e1e87ba1f",
+            "section_path": "4. Moguca nezeljena dejstva",
+            "page_index": 0,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "section_index": 4,
+            "record_type": "child",
+            "page_number": 4,
+            "child_chunk_count": 7,
+            "total_pages": 7,
+            "cloud_subchunk_index": 0,
+            "active_substance": "amlodipin"
+          },
+          "search_type": "dense_child"
+        }
+      ],
+      "prompt_context_characters": 6444,
+      "context_document_headers": 5,
+      "child_body_fully_in_prompt": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "english_xanax_missed_dose",
+      "question": "What should I do if I miss a dose of Xanax?",
+      "seconds": 1.8391110000084154,
+      "metrics_by_k": {
+        "1": {
+          "id": "english_xanax_missed_dose",
+          "question": "What should I do if I miss a dose of Xanax?",
+          "k": 1,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 1,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=3. Kako se uzima lek"
+              ],
+              "score": 0.70649993,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "3": {
+          "id": "english_xanax_missed_dose",
+          "question": "What should I do if I miss a dose of Xanax?",
+          "k": 3,
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 3,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=3. Kako se uzima lek"
+              ],
+              "score": 0.70649993,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.6674368399999999,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.6338086,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "5": {
+          "id": "english_xanax_missed_dose",
+          "question": "What should I do if I miss a dose of Xanax?",
+          "k": 5,
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 5,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=xanax.pdf | section_title=3. Kako se uzima lek"
+              ],
+              "score": 0.70649993,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.6674368399999999,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.6338086,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 4,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.6113466000000001,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 5,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.61076725,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_ddf55ff151f2e809841d4c6a",
+          "score": 0.70649993,
+          "chroma_score": 0.29350007,
+          "distance": 0.29350007,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 3. Kako se uzima lek\n\n2 do 4 nedelje. Ne preporučuje se dugotrajna terapija. Vaš lekar će\n\nodlučiti da li treba da nastavite terapiju nakon maksimalno preporučenog perioda.\n\nAko ste uzeli više leka Xanax nego što treba\n\nUkoliko ste uzeli previše leka Xanax, odmah se javite lekaru ili idite do najbliže službe hitne pomoći.\n\n− U blagim slučajevima, simptomi predoziranja mogu biti: mentalna konfuzija, pospanost i otežan\n\ngovor.\n\n− U težim slučajevima, simptomi predoziranja mogu biti: gubitak koordinacije pokreta, slab tonus\n\nmišića, nizak krvni pritisak, teškoće u disanju, koma i smrt.\n\nAko ste zaboravili da uzmete lek Xanax\n\nAko ste zaboravili da uzmete propisanu dozu leka, odmah uzmite propuštenu dozu, osim ako nije blizu\n\nvreme za sledeću dozu. Ne uzimajte duplu dozu da biste nadoknadili propuštenu dozu.\n\nAko naglo prestanete da uzimate lek Xanax\n\nNemojte naglo prestajati da uzimate lek Xanax. Uvek se konsultujte sa Vašim lekarom pre nego što",
+          "metadata": {
+            "content_type": "child_chunk",
+            "total_pages": 9,
+            "page": 5,
+            "section_detection": "medicine_leaflet_headings",
+            "document_bytes": 1054,
+            "child_chunk_count": 4,
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "record_type": "child",
+            "page_number": 5,
+            "section_id": "section_09fed273adeb1ce0f47d",
+            "original_chunk_index": 1,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "section_path": "3. Kako se uzima lek",
+            "child_chunk_index": 1,
+            "section_index": 3,
+            "cloud_chunk_index": 617,
+            "document_type": "medicine_leaflet",
+            "parent_id": "section_09fed273adeb1ce0f47d",
+            "parent_section_index": 3,
+            "folder": "alprazolam",
+            "cloud_subchunk_index": 0,
+            "active_substance": "alprazolam",
+            "medicine_name": "Xanax",
+            "file_type": ".pdf",
+            "section_title": "3. Kako se uzima lek",
+            "file_name": "xanax.pdf",
+            "page_index": 0,
+            "page_numbers": [
+              5,
+              6
+            ]
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_5920b42a8cf3f0623fc06c43",
+          "score": 0.6674368399999999,
+          "chroma_score": 0.33256316,
+          "distance": 0.33256316,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 3. Kako se uzima lek\n\nuzimajte duplu dozu da biste nadoknadili propuštenu dozu.\n\nAko naglo prestanete da uzimate lek Xanax\n\nNemojte naglo prestajati da uzimate lek Xanax. Uvek se konsultujte sa Vašim lekarom pre nego što\n\nprestanete da uzimate lek Xanax. Prilikom prekida terapije neophodno je postepeno smanjivati dozu leka da\n\nbi se izbegli:\n\n apstinencijalni simptomi kao što su:\n\n- teški simptomi: osećaj odvajanja od sebe ili ostatka sveta, utrnulost ili peckanje u rukama ili nogama,\n\npojačana osetljivost na svetlost, zvuke i fizički kontakt, halucinacije, epileptični napadi, grčevi u\n\nmišićima i stomaku, povraćanje, znojenje, podrhtavanje, tremor ili konvulzije;",
+          "metadata": {
+            "cloud_subchunk_index": 0,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "section_id": "section_09fed273adeb1ce0f47d",
+            "document_bytes": 758,
+            "active_substance": "alprazolam",
+            "parent_id": "section_09fed273adeb1ce0f47d",
+            "cloud_chunk_index": 618,
+            "page_numbers": [
+              5,
+              6
+            ],
+            "section_index": 3,
+            "file_name": "xanax.pdf",
+            "child_chunk_index": 2,
+            "file_type": ".pdf",
+            "total_pages": 9,
+            "section_title": "3. Kako se uzima lek",
+            "page_index": 0,
+            "medicine_name": "Xanax",
+            "record_type": "child",
+            "page_number": 5,
+            "folder": "alprazolam",
+            "page": 5,
+            "section_path": "3. Kako se uzima lek",
+            "original_chunk_index": 2,
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "child_chunk_count": 4,
+            "document_type": "medicine_leaflet",
+            "content_type": "child_chunk",
+            "section_detection": "medicine_leaflet_headings",
+            "parent_section_index": 3
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_037b376d0254b7a614c4ff0a",
+          "score": 0.6338086,
+          "chroma_score": 0.3661914,
+          "distance": 0.3661914,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 3. Kako se uzima lek\n\n3. Kako se uzima lek Xanax\n\nUvek uzimajte ovaj lek tačno onako kako Vam je to objasnio Vaš lekar ili farmaceut. Ukoliko niste sigurni\n\nproverite sa Vašim lekarom ili farmaceutom.\n\n Lečenje anksioznosti\n\nPreporučena početna doza je 0,25 mg do 0,5 mg, tri puta dnevno.\n\nDoza se može postepeno povećati do maksimalne dnevne doze od 4 mg, koja se uzima podeljena u više\n\ndoza. Prvo se povećava večernja doza, a zatim doza koja se uzima u toku dana.\n\nPrimena kod starijih pacijenata, pacijenata sa poremećajem funkcije jetre i bubrega i/ili iscrpljenih\n\npacijenata\n\nPreporučena početna doza je 0,25 mg, 2 do 3 puta dnevno.\n\nTrajanje terapije lekom Xanax treba da bude što je moguće kraće.\n\nPreporuka je da terapija traje najduže 2 do 4 nedelje. Ne preporučuje se dugotrajna terapija. Vaš lekar će\n\nodlučiti da li treba da nastavite terapiju nakon maksimalno preporučenog perioda.\n\nAko ste uzeli više leka Xanax nego što treba",
+          "metadata": {
+            "page_number": 5,
+            "active_substance": "alprazolam",
+            "medicine_name": "Xanax",
+            "child_chunk_count": 4,
+            "page": 5,
+            "section_id": "section_09fed273adeb1ce0f47d",
+            "original_chunk_index": 0,
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "document_type": "medicine_leaflet",
+            "section_detection": "medicine_leaflet_headings",
+            "file_type": ".pdf",
+            "total_pages": 9,
+            "document_bytes": 1040,
+            "section_title": "3. Kako se uzima lek",
+            "child_chunk_index": 0,
+            "page_numbers": [
+              5,
+              6
+            ],
+            "section_path": "3. Kako se uzima lek",
+            "section_index": 3,
+            "file_name": "xanax.pdf",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "content_type": "child_chunk",
+            "cloud_subchunk_index": 0,
+            "page_index": 0,
+            "parent_section_index": 3,
+            "folder": "alprazolam",
+            "cloud_chunk_index": 616,
+            "record_type": "child",
+            "parent_id": "section_09fed273adeb1ce0f47d"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_39cf599869d027404ea1158a",
+          "score": 0.6113466000000001,
+          "chroma_score": 0.3886534,
+          "distance": 0.3886534,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nukoliko uzimate, donedavno ste uzimali ili ćete možda uzimati bilo\n\nkoje druge lekove.\n\nIstovremena primena leka Xanax sa opioidima (jaki lekovi protiv bolova, lekovi za supstitucionu terapiju i\n\npojedini lekovi protiv kašlja) povećava rizik od pojave pospanosti, otežanog disanja (respiratorna depresija),\n\nkome, i može biti opasna po život. Zbog toga, istovremenu primenu treba razmotriti samo kada ne postoje\n\ndruge terapijske opcije.\n\nMeđutim, ukoliko Vam lekar propiše lek Xanax istovremeno sa opioidima, treba da ograniči dozu i trajanje\n\nistovremene primene ovih lekova.\n\nObavestite lekara o svim lekovima iz grupe opioida koje uzimate i  pridržavajte se p reporuka lekara o\n\ndoziranju. Preporučuje se d a informišete prijatelje ili rodbinu o znacima i simptomima navedenim iznad.\n\nJavite se lekaru ukoliko Vam se jave ovi simptomi.\n\nPotreban je poseban oprez kada se lek Xanax uzima istovremeno sa sledećim lekovima:\n\n lekovi koji deluju na moždane ili mentalne* funkcije, kao što su:",
+          "metadata": {
+            "section_index": 2,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "record_type": "child",
+            "section_detection": "medicine_leaflet_headings",
+            "document_type": "medicine_leaflet",
+            "original_chunk_index": 7,
+            "child_chunk_count": 15,
+            "file_type": ".pdf",
+            "content_type": "child_chunk",
+            "file_name": "xanax.pdf",
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "folder": "alprazolam",
+            "child_chunk_index": 7,
+            "total_pages": 9,
+            "parent_id": "section_522790df8bc59217d2f3",
+            "cloud_subchunk_index": 0,
+            "document_bytes": 1128,
+            "page_number": 2,
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "section_id": "section_522790df8bc59217d2f3",
+            "page_index": 0,
+            "page": 2,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "parent_section_index": 2,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "cloud_chunk_index": 608,
+            "active_substance": "alprazolam",
+            "medicine_name": "Xanax"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_c11aa43413be6181c5cd50a8",
+          "score": 0.61076725,
+          "chroma_score": 0.38923275,
+          "distance": 0.38923275,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nnekoliko nedelja terapije može doći do smanjenja dejstva leka Xanax.\n\nRazvoj zavisnosti\n\nLek Xanax izaziva zavisnost (tj. možete primetiti pojačanu želju za uzimanjem leka, ili fizičke simptome\n\nkoji će se smanjiti ili povući samo nakon uzimanja leka). Verovatnoća da se razvije zavisnost se povećava sa\n\npovećanjem doze i dužim trajanjem terapije. Zbog toga će Vam lekar propisati najpodesniju terapiju u skladu\n\nsa Vašim poremećajima i stanjima koristeči najmanju moguću efektivnu dozu koju treba uzimati tokom\n\nnajkraćeg mogućeg perioda. Lekar će Vas takođe posavetovati kada da imate preglede radi procene napretka\n\nu Vašem zdravlju u vezi sa terapijom lekom Xanax.\n\nKada se fizička zavisnost jednom razvije, naglo obustavljanje terapije biće praćeno simptomima obustave\n\nleka.\n\nObustavljanje terapije\n\nKao i kod drugih lekova iz grupe benzodiazepina, naglo obustavljanje lečenja može da dovede do pojave",
+          "metadata": {
+            "record_type": "child",
+            "parent_id": "section_522790df8bc59217d2f3",
+            "active_substance": "alprazolam",
+            "page_index": 0,
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "original_chunk_index": 4,
+            "section_index": 2,
+            "file_name": "xanax.pdf",
+            "total_pages": 9,
+            "child_chunk_count": 15,
+            "page_number": 2,
+            "content_type": "child_chunk",
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "child_chunk_index": 4,
+            "document_type": "medicine_leaflet",
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "document_bytes": 1052,
+            "folder": "alprazolam",
+            "cloud_subchunk_index": 0,
+            "medicine_name": "Xanax",
+            "section_detection": "medicine_leaflet_headings",
+            "section_id": "section_522790df8bc59217d2f3",
+            "parent_section_index": 2,
+            "file_type": ".pdf",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "cloud_chunk_index": 605,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "page": 2
+          },
+          "search_type": "dense_child"
+        }
+      ],
+      "prompt_context_characters": 6005,
+      "context_document_headers": 5,
+      "child_body_fully_in_prompt": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "norvasc_grapefruit",
+      "question": "Da li uz Norvasc sme sok od grejpfruta?",
+      "seconds": 2.4092914999928325,
+      "metrics_by_k": {
+        "1": {
+          "id": "norvasc_grapefruit",
+          "question": "Da li uz Norvasc sme sok od grejpfruta?",
+          "k": 1,
+          "precision_at_k": 1.0,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 1,
+          "returned_results": 1,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.78828871,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "3": {
+          "id": "norvasc_grapefruit",
+          "question": "Da li uz Norvasc sme sok od grejpfruta?",
+          "k": 3,
+          "precision_at_k": 0.6666666666666666,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 2,
+          "returned_results": 3,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.78828871,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.7372651,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.7131604,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "5": {
+          "id": "norvasc_grapefruit",
+          "question": "Da li uz Norvasc sme sok od grejpfruta?",
+          "k": 5,
+          "precision_at_k": 0.6,
+          "recall_at_k": 1.0,
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "relevant_results": 3,
+          "returned_results": 5,
+          "matched_expected": 1,
+          "expected_total": 1,
+          "missing_expected": [],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.78828871,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.7372651,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.7131604,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 4,
+              "is_relevant": true,
+              "matched_expected": [
+                "file_name=norvasc.pdf | section_title=['2. Sta treba da znate pre nego sto uzmete lek', '3. Kako se uzima lek']"
+              ],
+              "score": 0.70974773,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "3. Kako se uzima lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 5,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.7049033,
+              "file_name": "norvasc.pdf",
+              "medicine_name": "Norvasc",
+              "active_substance": "amlodipin",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_c877664aa2d514467b707963",
+          "score": 0.78828871,
+          "chroma_score": 0.21171129,
+          "distance": 0.21171129,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\ndrugih\n\nlekova, kao što su:\n\n ketokonazol, itrakonazol (lekovi za terapiju gljivičnih infekcija)\n\n ritonavir, indinavir, nelfinavir (tzv. inhibitori proteaze, lekovi za terapiju HIV infekcije)\n\n rifampicin, eritromicin, klaritromicin (antibiotici)\n\n Hypericum perforatum (kantarion)\n\n verapamil, diltiazem (lekovi za srce)\n\n dantrolen (primenjuje se u obliku infuzije za lečenje teških poremećaja telesne temperature)\n\n takrolimus, sirolimus, temsirolimus i everolimus (lekovi koji menjaju način na koji Vaš imunski\n\nsistem radi )\n\n3 od 7\n\n simvastatin (lek za snižavanje vrednosti holesterola)\n\n ciklosporin (imunosupresiv)\n\nUticaj leka Norvasc na sniženje krvnog pritiska je izraženiji ukoliko već uzimate druge lekove za lečenje\n\npovišenog krvnog pritiska.\n\nUzimanje leka Norvasc sa hranom i pićima\n\nDok uzimate l ek Norvasc ne treba da konzumirate grejpfrut, niti sok od grejpfruta. Grejpfrut i sok od",
+          "metadata": {
+            "active_substance": "amlodipin",
+            "section_id": "section_28f0eaa36b0f5c247ad1",
+            "parent_section_index": 2,
+            "total_pages": 7,
+            "cloud_subchunk_index": 0,
+            "record_type": "child",
+            "page_index": 0,
+            "page_numbers": [
+              2,
+              3
+            ],
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "child_chunk_count": 5,
+            "page_number": 2,
+            "original_chunk_index": 2,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "parent_id": "section_28f0eaa36b0f5c247ad1",
+            "page": 2,
+            "folder": "amlodipin",
+            "file_name": "norvasc.pdf",
+            "medicine_name": "Norvasc",
+            "cloud_chunk_index": 634,
+            "file_type": ".pdf",
+            "section_index": 2,
+            "section_detection": "medicine_leaflet_headings",
+            "child_chunk_index": 2,
+            "content_type": "child_chunk",
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "document_type": "medicine_leaflet",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "document_bytes": 1066
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_0e1a1143d6bf6168de4d8f41",
+          "score": 0.7372651,
+          "chroma_score": 0.2627349,
+          "distance": 0.2627349,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\ndruge lekove za lečenje\n\npovišenog krvnog pritiska.\n\nUzimanje leka Norvasc sa hranom i pićima\n\nDok uzimate l ek Norvasc ne treba da konzumirate grejpfrut, niti sok od grejpfruta. Grejpfrut i sok od\n\ngrejpfruta mogu dovesti do povećanja koncentracije aktivne supstance amlodipin u krvi, što može izazvati\n\nnepredvidivi efekat leka Norvasc na sniženje krvnog pritiska.\n\nTrudnoća i dojenje\n\nTrudnoća\n\nNije utvrđena bezbednost primene amlodipina u trudnoći. Ukoliko ste trudni, mislite da ste t rudni ili\n\nplanirate trudnoću, obratite se Vašem lekaru ili farmaceutu za savet pre nego što uzmete ovaj lek.\n\nDojenje\n\nAmlodipin se izlučuje u majčino mleko u malim količinama. Ukoliko dojite ili planirate da dojite dete,\n\nobratite se Vašem lekaru pre nego što počnete da uzimate lek Norvasc.\n\nPre nego što počnete da uzimate neki lek, posavetujte se sa Vašim lekarom ili farmaceutom.\n\nUpravljanje vozilima i rukovanje mašinama",
+          "metadata": {
+            "page_number": 2,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "section_detection": "medicine_leaflet_headings",
+            "file_type": ".pdf",
+            "cloud_subchunk_index": 0,
+            "original_chunk_index": 3,
+            "total_pages": 7,
+            "medicine_name": "Norvasc",
+            "section_index": 2,
+            "folder": "amlodipin",
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "section_id": "section_28f0eaa36b0f5c247ad1",
+            "page": 2,
+            "document_type": "medicine_leaflet",
+            "page_index": 0,
+            "active_substance": "amlodipin",
+            "file_name": "norvasc.pdf",
+            "parent_section_index": 2,
+            "page_numbers": [
+              2,
+              3
+            ],
+            "child_chunk_index": 3,
+            "document_bytes": 1063,
+            "parent_id": "section_28f0eaa36b0f5c247ad1",
+            "cloud_chunk_index": 635,
+            "child_chunk_count": 5,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "content_type": "child_chunk",
+            "record_type": "child"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_355515b2580d16bc124fa673",
+          "score": 0.7131604,
+          "chroma_score": 0.2868396,
+          "distance": 0.2868396,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nVašeg lekara ukoliko ste imali ili imate bilo koje od sledećih stanja:\n\n skorašnji srčani udar\n\n srčanu slabost\n\n povišenje krvnog pritiska teškog stepena (hipertenzivna kriza)\n\n oboljenje jetre\n\n ako ste starija osoba, u slučaju da Vam je potrebno povećanje doze leka.\n\nDeca i adolescenti\n\nPrimena leka Norvasc nije ispitivana kod dece mlađe od 6 godina. Lek Norvasc se koristi samo za lečenje\n\npovišenog krvnog pritiska kod dece i adolescenata uzrasta od 6 do 17 godina (vidite odeljak 3).\n\nZa detaljnije informacije obratite se Vašem lekaru.\n\nDrugi lekovi i lek Norvasc\n\nObavestite Vašeg lekara ili farmaceuta ukoliko uzimate, donedavno ste uzimali ili ćete možda uzimati bilo\n\nkoje druge lekove.\n\nNeki lekovi mogu uticati na dejstvo leka Norvasc, a takođe i lek Norvasc može uticati na dejstvo drugih\n\nlekova, kao što su:\n\n ketokonazol, itrakonazol (lekovi za terapiju gljivičnih infekcija)\n\n ritonavir, indinavir, nelfinavir (tzv. inhibitori proteaze, lekovi za terapiju HIV infekcije)",
+          "metadata": {
+            "page_index": 0,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "section_id": "section_28f0eaa36b0f5c247ad1",
+            "folder": "amlodipin",
+            "original_chunk_index": 1,
+            "child_chunk_index": 1,
+            "parent_section_index": 2,
+            "medicine_name": "Norvasc",
+            "section_index": 2,
+            "page": 2,
+            "section_detection": "medicine_leaflet_headings",
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "parent_id": "section_28f0eaa36b0f5c247ad1",
+            "active_substance": "amlodipin",
+            "record_type": "child",
+            "child_chunk_count": 5,
+            "document_bytes": 1151,
+            "document_type": "medicine_leaflet",
+            "page_numbers": [
+              2,
+              3
+            ],
+            "cloud_chunk_index": 633,
+            "content_type": "child_chunk",
+            "source_document_id": "source_9e3ba4d2e1a793c91e37",
+            "page_number": 2,
+            "total_pages": 7,
+            "file_name": "norvasc.pdf",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "file_type": ".pdf",
+            "cloud_subchunk_index": 0
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_914c7d755df18fd373009261",
+          "score": 0.70974773,
+          "chroma_score": 0.29025227,
+          "distance": 0.29025227,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 3. Kako se uzima lek\n\n3. Kako se uzima lek Norvasc\n\nUvek uzimajte ovaj lek tačno onako kako Vam je objasnio Vaš lekar ili farmaceut. Ukoliko niste sigurni\n\nproverite sa Vašim lekarom ili farmaceutom.\n\nPreporučena početna doza leka Norvasc je 5 mg jednom dnevno. Doza se može povećati na 10 mg jednom\n\ndnevno.\n\nLek Norvasc se m ože uzimati pre i li posle obroka. Lek treba uzimati svakoga dana u isto vreme sa\n\ndovoljnom količinom vode ili neke druge tečnosti. Ne uzimajte lek Norvasc sa sokom od grejpfruta.\n\nPrimena kod dece i adolescenata\n\nPreporučena početna doza kod dece i adolescenata uzrasta od 6 do 17 godina iznosi 2,5 mg dnevno.\n\nMaksimalna preporučena doza u ovom uzrastu iznosi 5 mg dnevno.\n\nTableta od 5 mg se može podeliti na dve jednake doze od 2,5 mg.\n\nVažno je da redovno uzimate propisanu terapiju. Pre nego što potrošite sve tablete iz pakovanja, posetite\n\nVašeg lekara da bi Vam propisao dalju terapiju.\n\nAko ste uzeli više leka Norvasc nego što treba",
+          "metadata": {
+            "cloud_chunk_index": 637,
+            "original_chunk_index": 0,
+            "section_index": 3,
+            "total_pages": 7,
+            "file_type": ".pdf",
+            "page_number": 3,
+            "parent_section_index": 3,
+            "active_substance": "amlodipin",
+            "section_id": "section_d53e3ae34081fc2d9bb4",
+            "section_path": "3. Kako se uzima lek",
+            "document_bytes": 1064,
+            "child_chunk_index": 0,
+            "document_type": "medicine_leaflet",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "section_detection": "medicine_leaflet_headings",
+            "section_title": "3. Kako se uzima lek",
+            "parent_id": "section_d53e3ae34081fc2d9bb4",
+            "medicine_name": "Norvasc",
+            "file_name": "norvasc.pdf",
+            "folder": "amlodipin",
+            "page_numbers": [
+              3,
+              4
+            ],
+            "content_type": "child_chunk",
+            "page_index": 0,
+            "record_type": "child",
+            "cloud_subchunk_index": 0,
+            "page": 3,
+            "child_chunk_count": 3,
+            "source_document_id": "source_9e3ba4d2e1a793c91e37"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_31e9073649d7c9bd19fd1db8",
+          "score": 0.7049033,
+          "chroma_score": 0.2950967,
+          "distance": 0.2950967,
+          "text": "Lek: Norvasc\nAktivna supstanca: amlodipin\nDocument: norvasc.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\n2. Šta treba da znate pre nego što uzmete lek Norvasc\n\nLek Norvasc ne smete uzimati:\n\n ukoliko ste a lergični (preosetljivi) na amlodipin ili na bilo koju od pomoćnih supstanci ovog leka\n\n(navedene u odeljku 6) ili bilo koji drugi lek iz grupe antagonista kalcijuma. Alergijska reakcija se\n\nmože ispoljiti kao svrab i crvenilo kože ili kao otežano disanje.\n\n ukoliko imate težak stepen sniženja krvnog pritiska (hipotenzije).\n\n ukoliko imate suženje aortnih zalistaka (aortnu stenozu) ili kardiogeni šok (stanje kada srce ne može\n\nda obezbedi dovoljno krvi organizmu).\n\n ukoliko bolujete od srčane slabosti nakon preležanog srčanog napada.\n\nUpozorenja i mere opreza\n\nRazgovarajte sa Vašim lekarom ili farmaceutom pre nego što uzmete lek Norvasc.\n\nMorate obavestiti Vašeg lekara ukoliko ste imali ili imate bilo koje od sledećih stanja:\n\n skorašnji srčani udar\n\n srčanu slabost\n\n povišenje krvnog pritiska teškog stepena (hipertenzivna kriza)\n\n oboljenje jetre",
+          "metadata": {
+            "active_substance": "amlodipin",
+            "page": 2,
+            "page_numbers": [
+              2,
+              3
+            ],
+            "document_bytes": 1127,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\amlodipin\\norvasc.pdf",
+            "cloud_chunk_index": 632,
+            "cloud_subchunk_index": 0,
+            "page_number": 2,
+            "section_index": 2,
+            "file_name": "norvasc.pdf",
+            "total_pages": 7,
+            "child_chunk_count": 5,
+            "original_chunk_index": 0,
+            "section_id": "section_28f0eaa36b0f5c247ad1",
+            "page_index": 0,
+            "document_type": "medicine_leaflet",
+            "content_type": "child_chunk",
+            "child_chunk_index": 0,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "folder": "amlodipin",
+            "medicine_name": "Norvasc",
+            "section_detection": "medicine_leaflet_headings",
+            "record_type": "child",
+            "parent_section_index": 2,
+            "parent_id": "section_28f0eaa36b0f5c247ad1",
+            "file_type": ".pdf",
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "source_document_id": "source_9e3ba4d2e1a793c91e37"
+          },
+          "search_type": "dense_child"
+        }
+      ],
+      "prompt_context_characters": 6519,
+      "context_document_headers": 5,
+      "child_body_fully_in_prompt": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "xanax_driving",
+      "question": "Smem li da vozim dok uzimam Xanax?",
+      "seconds": 3.005996599997161,
+      "metrics_by_k": {
+        "1": {
+          "id": "xanax_driving",
+          "question": "Smem li da vozim dok uzimam Xanax?",
+          "k": 1,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_at_k": 0.0,
+          "mrr_at_k": 0.0,
+          "relevant_results": 0,
+          "returned_results": 1,
+          "matched_expected": 0,
+          "expected_total": 1,
+          "missing_expected": [
+            "file_name=xanax.pdf | section_title=2. Sta treba da znate pre nego sto uzmete lek"
+          ],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.81918532,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "3": {
+          "id": "xanax_driving",
+          "question": "Smem li da vozim dok uzimam Xanax?",
+          "k": 3,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_at_k": 0.0,
+          "mrr_at_k": 0.0,
+          "relevant_results": 0,
+          "returned_results": 3,
+          "matched_expected": 0,
+          "expected_total": 1,
+          "missing_expected": [
+            "file_name=xanax.pdf | section_title=2. Sta treba da znate pre nego sto uzmete lek"
+          ],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.81918532,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.80689228,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.79743052,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            }
+          ]
+        },
+        "5": {
+          "id": "xanax_driving",
+          "question": "Smem li da vozim dok uzimam Xanax?",
+          "k": 5,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_at_k": 0.0,
+          "mrr_at_k": 0.0,
+          "relevant_results": 0,
+          "returned_results": 5,
+          "matched_expected": 0,
+          "expected_total": 1,
+          "missing_expected": [
+            "file_name=xanax.pdf | section_title=2. Sta treba da znate pre nego sto uzmete lek"
+          ],
+          "ranked_results": [
+            {
+              "rank": 1,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.81918532,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 2,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.80689228,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 3,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.79743052,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 4,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.79704922,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            },
+            {
+              "rank": 5,
+              "is_relevant": false,
+              "matched_expected": [],
+              "score": 0.79556298,
+              "file_name": "xanax.pdf",
+              "medicine_name": "Xanax",
+              "active_substance": "alprazolam",
+              "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+              "search_type": "dense_child"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "id": "child_39cf599869d027404ea1158a",
+          "score": 0.81918532,
+          "chroma_score": 0.18081468,
+          "distance": 0.18081468,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nukoliko uzimate, donedavno ste uzimali ili ćete možda uzimati bilo\n\nkoje druge lekove.\n\nIstovremena primena leka Xanax sa opioidima (jaki lekovi protiv bolova, lekovi za supstitucionu terapiju i\n\npojedini lekovi protiv kašlja) povećava rizik od pojave pospanosti, otežanog disanja (respiratorna depresija),\n\nkome, i može biti opasna po život. Zbog toga, istovremenu primenu treba razmotriti samo kada ne postoje\n\ndruge terapijske opcije.\n\nMeđutim, ukoliko Vam lekar propiše lek Xanax istovremeno sa opioidima, treba da ograniči dozu i trajanje\n\nistovremene primene ovih lekova.\n\nObavestite lekara o svim lekovima iz grupe opioida koje uzimate i  pridržavajte se p reporuka lekara o\n\ndoziranju. Preporučuje se d a informišete prijatelje ili rodbinu o znacima i simptomima navedenim iznad.\n\nJavite se lekaru ukoliko Vam se jave ovi simptomi.\n\nPotreban je poseban oprez kada se lek Xanax uzima istovremeno sa sledećim lekovima:\n\n lekovi koji deluju na moždane ili mentalne* funkcije, kao što su:",
+          "metadata": {
+            "parent_id": "section_522790df8bc59217d2f3",
+            "file_type": ".pdf",
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "folder": "alprazolam",
+            "section_index": 2,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "child_chunk_index": 7,
+            "document_bytes": 1128,
+            "page_index": 0,
+            "medicine_name": "Xanax",
+            "cloud_subchunk_index": 0,
+            "child_chunk_count": 15,
+            "record_type": "child",
+            "file_name": "xanax.pdf",
+            "original_chunk_index": 7,
+            "parent_section_index": 2,
+            "content_type": "child_chunk",
+            "page": 2,
+            "active_substance": "alprazolam",
+            "cloud_chunk_index": 608,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "total_pages": 9,
+            "section_detection": "medicine_leaflet_headings",
+            "page_number": 2,
+            "section_id": "section_522790df8bc59217d2f3",
+            "document_type": "medicine_leaflet"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_a7b42153ffd59551ddb83d2b",
+          "score": 0.80689228,
+          "chroma_score": 0.19310772,
+          "distance": 0.19310772,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nlekom Xanax, anestetici mogu da izazovu\n\neuforiju, sa povećanom verovatnoćom da se razvije zavisnost od leka Xanax;\n\n sedativni antihistaminici, lekovi koji se koriste za lečenje simptoma alergije;\n\n*Ukoliko se lek Xanax uzima istovremeno sa jednim ili više navedenih lekova ili alkoholnim pićima,\n\nmože doći do dodatnog slabljenja moždanih i mentalnih funkcija sve do smanjenja sposobnosti\n\nspontanog disanja, kome i smrti (videti deo „Upozorenja i mere opreza”);\n\n cimetidin, lek za lečenje gorušice;\n\n propoksifen, lek za ublažavanje bolova;\n\n oralni kontraceptivi (lekovi za zaštitu od trudnoće);\n\n diltiazem, lek koji se koristi za snižavanje krvnog pritiska;\n\n digoksin (lek koji se koristi za lečenje srčane slabosti). Uzimanje leka Xanax kod starijih povećava\n\nverovatnoću od pojave toksičnih efekata digoksina.\n\nSledeći lekovi mogu povećati dejstvo leka Xanax:\n\n ketokonazol, itrakonazol, posakonazol i vorikonazol, lekovi za lečenje gljivičnih infekcija;",
+          "metadata": {
+            "section_id": "section_522790df8bc59217d2f3",
+            "total_pages": 9,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "page_number": 2,
+            "original_chunk_index": 9,
+            "cloud_subchunk_index": 0,
+            "cloud_chunk_index": 610,
+            "parent_id": "section_522790df8bc59217d2f3",
+            "child_chunk_count": 15,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "page": 2,
+            "content_type": "child_chunk",
+            "document_bytes": 1129,
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "section_index": 2,
+            "child_chunk_index": 9,
+            "file_name": "xanax.pdf",
+            "document_type": "medicine_leaflet",
+            "folder": "alprazolam",
+            "medicine_name": "Xanax",
+            "file_type": ".pdf",
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "section_detection": "medicine_leaflet_headings",
+            "record_type": "child",
+            "page_index": 0,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "parent_section_index": 2,
+            "active_substance": "alprazolam"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_b33f15c347c14ea5ba8abeaa",
+          "score": 0.79743052,
+          "chroma_score": 0.20256948,
+          "distance": 0.20256948,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nse lekaru ukoliko Vam se jave ovi simptomi.\n\nPotreban je poseban oprez kada se lek Xanax uzima istovremeno sa sledećim lekovima:\n\n lekovi koji deluju na moždane ili mentalne* funkcije, kao što su:\n\n antipsihotici, lekovi za lečenje određenih mentalnih poremećaja;\n\n4 od 9\n\n hipnotici, lekovi koji pomažu da zaspite;\n\n sedativi, lekovi koji se koriste za smirenje;\n\n anksiolitici, lekovi koji se koriste za lečenje uznemirenosti;\n\n antidepresivi (kao što su nefazodon, fluvoksamin, fluoksetin, imipramin i dezipramin), lekovi\n\nkoji se koriste za lečenje depresije;\n\n narkotički analgetici, opioidi, lekovi koji se koriste za lečenje bolova jakog intenziteta;\n\n antiepileptici, lekovi koji se koriste za lečenje epileptičnih napada;\n\n anestetici. Kada se primenjuju istovremeno sa lekom Xanax, anestetici mogu da izazovu\n\neuforiju, sa povećanom verovatnoćom da se razvije zavisnost od leka Xanax;\n\n sedativni antihistaminici, lekovi koji se koriste za lečenje simptoma alergije;",
+          "metadata": {
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "section_id": "section_522790df8bc59217d2f3",
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "file_type": ".pdf",
+            "content_type": "child_chunk",
+            "section_index": 2,
+            "cloud_chunk_index": 609,
+            "page_index": 0,
+            "record_type": "child",
+            "section_detection": "medicine_leaflet_headings",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "parent_section_index": 2,
+            "file_name": "xanax.pdf",
+            "page": 2,
+            "page_number": 2,
+            "original_chunk_index": 8,
+            "total_pages": 9,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "parent_id": "section_522790df8bc59217d2f3",
+            "child_chunk_index": 8,
+            "active_substance": "alprazolam",
+            "document_bytes": 1140,
+            "medicine_name": "Xanax",
+            "child_chunk_count": 15,
+            "cloud_subchunk_index": 0,
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "document_type": "medicine_leaflet",
+            "folder": "alprazolam"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_6d47cbdfe0743206ee7ac7b0",
+          "score": 0.79704922,
+          "chroma_score": 0.20295078,
+          "distance": 0.20295078,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\n2. Šta treba da znate pre nego što uzmete lek Xanax\n\nLek Xanax ne smete uzimati:\n\n- ukoliko ste alergični (preosetljivi) na alprazolam, druge benzodiazepine ili na bilo koju od pomoćnih\n\nsupstanci ovog leka (navedene u odeljku 6);\n\n- ukoliko imate miasteniju gravis, bolest koju karakteriše izrazita slabost mišića;\n\n- ukoliko imate teških problema sa disanjem (teška respiratorna insuficijencija);\n\n- ukoliko imate teško oboljenje jetre (insuficijencija jetre);\n\n- ukoliko imate teškoća sa disanjem dokom spavanja (apnea u snu);\n\nUpozorenja i mere opreza\n\nRazgovarajte sa svojim lekarom ili farmaceutom pre nego što uzmete lek Xanax.\n\nTrajanje lečenja treba da bude što je moguće kraće i ne treba da traje duže od 2 do 4 nedelje. Dalje\n\nproduženje lečenja izvan ovih okvira dozvoljeno je isključivo nakon ponovne procene kliničkog stanja.\n\nOvaj lek može dovesti do smanjenja ili čak gubitka svesti, značajnog smanjenja sposobnosti spontanog",
+          "metadata": {
+            "child_chunk_count": 15,
+            "page": 2,
+            "folder": "alprazolam",
+            "total_pages": 9,
+            "original_chunk_index": 0,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "child_chunk_index": 0,
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "section_detection": "medicine_leaflet_headings",
+            "file_type": ".pdf",
+            "document_type": "medicine_leaflet",
+            "document_bytes": 1083,
+            "file_name": "xanax.pdf",
+            "section_id": "section_522790df8bc59217d2f3",
+            "parent_section_index": 2,
+            "cloud_subchunk_index": 0,
+            "page_index": 0,
+            "record_type": "child",
+            "medicine_name": "Xanax",
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "cloud_chunk_index": 601,
+            "content_type": "child_chunk",
+            "parent_id": "section_522790df8bc59217d2f3",
+            "page_number": 2,
+            "section_index": 2,
+            "active_substance": "alprazolam"
+          },
+          "search_type": "dense_child"
+        },
+        {
+          "id": "child_328b9bf7ee1205dd4e23603d",
+          "score": 0.79556298,
+          "chroma_score": 0.20443702,
+          "distance": 0.20443702,
+          "text": "Lek: Xanax\nAktivna supstanca: alprazolam\nDocument: xanax.pdf\nSection: 2. Sta treba da znate pre nego sto uzmete lek\n\nod pojave toksičnih efekata digoksina.\n\nSledeći lekovi mogu povećati dejstvo leka Xanax:\n\n ketokonazol, itrakonazol, posakonazol i vorikonazol, lekovi za lečenje gljivičnih infekcija;\n\n eritromicin, klaritromicin, telitromicin i troleandomicin (antibiotici);\n\n inhibitori proteaze (npr. ritonavir), lekovi za lečenje infekcije HIV virusom. Ako se lečite inhibitorima\n\nproteaze, lekar može takođe preporučiti obustavljanje terapije lekom Xanax zbog interakcije sa ovim\n\nlekovima.\n\nUzimanje leka Xanax sa alkoholom\n\nIzbegavajte uzimanje alkohola dok ste na terapiji lekom Xanax, jer alkohol pojačava dejstva ovog leka.\n\nTrudnoća i dojenje\n\nUkoliko ste trudni ili dojite, mislite da ste trudni ili planirate trudnoću, obratite se Vašem lekaru ili\n\nfarmaceutu za savet pre nego što uzmete ovaj lek.\n\nTrudnoća\n\nIskustva primene kod ljudi ukazuju da ovaj lek može biti štetan za fetus ukoliko se koristi tokom prvog\n\ntrimestra trudnoće (povećan rizik od pojave anomalija kao što je rascep nepca).",
+          "metadata": {
+            "original_chunk_index": 10,
+            "document_type": "medicine_leaflet",
+            "section_detection": "medicine_leaflet_headings",
+            "page_numbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "source_document_id": "source_97f8d2f3ee56d823bb8a",
+            "source": "C:\\Faks\\DIPLOMSKI\\Literatura\\Lekovi\\alprazolam\\xanax.pdf",
+            "section_index": 2,
+            "active_substance": "alprazolam",
+            "parent_section_index": 2,
+            "child_chunk_count": 15,
+            "cloud_chunk_index": 611,
+            "document_bytes": 1137,
+            "medicine_name": "Xanax",
+            "file_type": ".pdf",
+            "page_index": 0,
+            "total_pages": 9,
+            "parent_id": "section_522790df8bc59217d2f3",
+            "content_type": "child_chunk",
+            "section_id": "section_522790df8bc59217d2f3",
+            "page_number": 2,
+            "child_chunk_index": 10,
+            "section_path": "2. Sta treba da znate pre nego sto uzmete lek",
+            "folder": "alprazolam",
+            "section_title": "2. Sta treba da znate pre nego sto uzmete lek",
+            "file_name": "xanax.pdf",
+            "cloud_subchunk_index": 0,
+            "record_type": "child",
+            "page": 2
+          },
+          "search_type": "dense_child"
+        }
+      ],
+      "prompt_context_characters": 6707,
+      "context_document_headers": 5,
+      "child_body_fully_in_prompt": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ]
+}

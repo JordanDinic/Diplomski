@@ -1,0 +1,16 @@
+{
+  "mode": "Streamlit AppTest with fake backend; no browser layout assessment",
+  "initial_errors": 0,
+  "after_answer": {
+    "errors": 0,
+    "source_tables": 1,
+    "context_expanders": 1,
+    "chat_messages": 2
+  },
+  "after_rerun": {
+    "errors": 0,
+    "source_tables": 1,
+    "context_expanders": 1,
+    "chat_messages": 2
+  }
+}

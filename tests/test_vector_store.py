@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import Mock
 
 from langchain_core.documents import Document
 
@@ -107,6 +108,71 @@ class VectorStoreHelperTests(unittest.TestCase):
         self.assertEqual(expanded[0]["metadata"]["record_type"], "parent")
         self.assertEqual(expanded[0]["metadata"]["retrieved_child_id"], "child_1")
         self.assertEqual(expanded[0]["child_text"], "Document: sample.pdf\nSection: S\n\nsmall child")
+
+
+class VectorStoreSearchTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.children = [
+            {
+                "id": f"child_{index}",
+                "text": f"Child text {index}",
+                "score": 0.9 - index / 10,
+                "search_type": "dense_child",
+                "metadata": {
+                    "source": "sample.pdf",
+                    "record_type": "child",
+                    "parent_id": "parent_1",
+                    "child_chunk_index": index,
+                },
+            }
+            for index in range(3)
+        ]
+        self.store = ChromaVectorStore.__new__(ChromaVectorStore)
+        self.store.use_hybrid_search = True
+        self.store.group_by_source = False
+        self.store.record_count = Mock(return_value=len(self.children))
+        self.store.hybrid_search = Mock(return_value=self.children)
+        self.store.dense_search = Mock(return_value=self.children)
+        self.store.parents_by_id = Mock(
+            side_effect=AssertionError("Child-only retrieval must not fetch parents.")
+        )
+
+    def test_child_only_search_keeps_hits_from_the_same_section(self) -> None:
+        for hybrid in (True, False):
+            with self.subTest(hybrid=hybrid):
+                results = self.store.query(
+                    "query", top_k=2, candidate_count=3,
+                    use_hybrid_search=hybrid, expand_to_parent=False,
+                )
+
+                self.assertEqual(results, self.children[:2])
+                self.store.parents_by_id.assert_not_called()
+
+    def test_dense_fallback_also_skips_parent_expansion(self) -> None:
+        self.store.hybrid_search.side_effect = RuntimeError("Hybrid unavailable")
+
+        results = self.store.search("query", top_k=2, expand_to_parent=False)
+
+        self.assertEqual(results, self.children[:2])
+        self.store.dense_search.assert_called_once()
+        self.store.parents_by_id.assert_not_called()
+
+    def test_parent_expansion_remains_available_when_requested(self) -> None:
+        self.store.parents_by_id.side_effect = None
+        self.store.parents_by_id.return_value = {
+            "parent_1": {
+                "text": "Full parent section",
+                "metadata": {"record_type": "parent", "parent_id": "parent_1"},
+            }
+        }
+
+        results = self.store.query("query", top_k=2, expand_to_parent=True)
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["text"], "Full parent section")
+        self.assertEqual(results[0]["child_text"], self.children[0]["text"])
+        self.assertEqual(results[0]["score"], self.children[0]["score"])
+        self.store.parents_by_id.assert_called_once()
 
 
 class FakeParentCollection:
